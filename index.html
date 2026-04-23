@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Australia Family Trip – 7–19 July 2026 (FLL @ Macquarie Uni + Melbourne)</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --panel: #1e293b;
+    --panel2: #273549;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent2: #f472b6;
+    --gold: #fbbf24;
+    --green: #34d399;
+    --red: #f87171;
+    --card: #ffffff;
+    --card-text: #0f172a;
+    --border: #334155;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: var(--text);
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+  header.hero {
+    padding: 40px 24px 28px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #831843 50%, #0f766e 100%);
+    text-align: center;
+    border-bottom: 3px solid var(--gold);
+  }
+  header.hero h1 {
+    margin: 0 0 8px;
+    font-size: 2.2rem;
+    letter-spacing: -0.5px;
+  }
+  header.hero p {
+    margin: 4px 0;
+    color: #cbd5e1;
+    font-size: 1.05rem;
+  }
+  header.hero .meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  header.hero .pill {
+    background: rgba(255,255,255,0.15);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    backdrop-filter: blur(8px);
+  }
+
+  nav.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 14px 20px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  nav.tabs button {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.18s;
+  }
+  nav.tabs button:hover { background: var(--panel2); color: var(--text); }
+  nav.tabs button.active {
+    background: var(--accent);
+    color: #0f172a;
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 28px 20px 80px;
+  }
+  .section { display: none; animation: fadeIn 0.35s ease; }
+  .section.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h2 {
+    font-size: 1.7rem;
+    margin: 0 0 6px;
+    color: #fff;
+    border-left: 4px solid var(--accent);
+    padding-left: 14px;
+  }
+  h3 { color: var(--accent); font-size: 1.15rem; margin-top: 24px; }
+  h4 { color: var(--gold); margin: 18px 0 6px; font-size: 1rem; }
+  p.lead { color: var(--muted); margin-top: 0; margin-bottom: 20px; }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 14px 0;
+  }
+  .card.tight { padding: 12px 16px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin: 14px 0;
+  }
+
+  .info-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.92rem;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-row .key { color: var(--muted); }
+  .info-row .val { color: var(--text); }
+
+  .timeline {
+    border-left: 2px solid var(--accent);
+    margin-left: 10px;
+    padding-left: 20px;
+  }
+  .timeline .event {
+    position: relative;
+    padding: 8px 0 14px;
+  }
+  .timeline .event::before {
+    content: "";
+    position: absolute;
+    left: -27px;
+    top: 14px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+  .timeline .event .time {
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+  .timeline .event .what { font-weight: 500; }
+  .timeline .event .note { color: var(--muted); font-size: 0.85rem; margin-top: 2px; }
+
+  .cuisine-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 12px;
+    padding: 14px;
+    background: var(--panel2);
+    border-radius: 10px;
+  }
+  .cuisine-bar .label {
+    align-self: center;
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-right: 6px;
+  }
+  .cuisine-pill {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .cuisine-pill:hover { border-color: var(--accent); }
+  .cuisine-pill.on {
+    background: var(--accent);
+    color: #0f172a;
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+
+  .dining-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+    margin: 12px 0 24px;
+  }
+  .dine {
+    background: var(--card);
+    color: var(--card-text);
+    border-radius: 12px;
+    padding: 16px;
+    border-top: 4px solid var(--accent);
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .dine:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.3); }
+  .dine.hidden { display: none; }
+  .dine .cuisine-tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #0f172a;
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    text-transform: uppercase;
+  }
+  .dine h5 {
+    margin: 8px 0 4px;
+    font-size: 1rem;
+    color: #0f172a;
+  }
+  .dine .price {
+    color: #475569;
+    font-size: 0.85rem;
+    margin: 2px 0 6px;
+  }
+  .dine .desc {
+    font-size: 0.85rem;
+    color: #334155;
+    margin: 6px 0 8px;
+  }
+  .dine .addr {
+    font-size: 0.78rem;
+    color: #64748b;
+    border-top: 1px dashed #cbd5e1;
+    padding-top: 6px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    background: var(--panel);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  th { background: var(--panel2); color: var(--gold); font-weight: 600; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; }
+
+  .flight-option {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 12px 0;
+    border-left: 4px solid var(--accent);
+  }
+  .flight-option.premium { border-left-color: var(--gold); }
+  .flight-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .flight-header .route {
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .flight-header .cabin {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .cabin.eco { background: #0ea5e9; color: #fff; }
+  .cabin.prem { background: var(--gold); color: #0f172a; }
+
+  details {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin: 8px 0;
+  }
+  details summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--accent);
+    padding: 4px 0;
+  }
+  details[open] summary { margin-bottom: 8px; color: var(--gold); }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-right: 5px;
+  }
+  .b-event { background: #dc2626; color: #fff; }
+  .b-travel { background: #0ea5e9; color: #fff; }
+  .b-fun { background: #a855f7; color: #fff; }
+  .b-tip { background: var(--gold); color: #0f172a; }
+
+  .kid-tag {
+    display: inline-block;
+    background: #fef3c7;
+    color: #92400e;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-left: 6px;
+  }
+
+  .tip-box {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #78350f;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin: 14px 0;
+    border-left: 4px solid #f59e0b;
+  }
+  .tip-box strong { color: #78350f; }
+
+  .warn-box {
+    background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+    color: #7f1d1d;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin: 14px 0;
+    border-left: 4px solid #dc2626;
+  }
+
+  .success-box {
+    background: linear-gradient(135deg, #bbf7d0 0%, #86efac 100%);
+    color: #14532d;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin: 14px 0;
+    border-left: 4px solid #16a34a;
+  }
+
+  a { color: var(--accent); }
+  a:hover { color: var(--gold); }
+
+  footer {
+    text-align: center;
+    padding: 22px;
+    color: var(--muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+    margin-top: 30px;
+  }
+
+  @media (max-width: 640px) {
+    header.hero h1 { font-size: 1.4rem; }
+    nav.tabs { padding: 10px; }
+    nav.tabs button { padding: 6px 10px; font-size: 0.78rem; }
+    main { padding: 18px 12px 60px; }
+    .info-row { grid-template-columns: 1fr; gap: 2px; }
+  }
+
+  /* ============ CUSTOMIZE / EDIT MODE ============ */
+  .customize-bar {
+    background: var(--panel2);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 0.85rem;
+  }
+  .customize-bar > .cb-title { font-weight: 600; color: var(--gold); }
+  .customize-bar .cb-info {
+    color: var(--muted);
+    font-size: 0.78rem;
+    flex: 1;
+    min-width: 220px;
+  }
+  .customize-bar button {
+    background: var(--panel);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+  .customize-bar button:hover { background: var(--accent); color: #0f172a; border-color: var(--accent); }
+  .customize-bar button.danger:hover { background: var(--red); color: white; border-color: var(--red); }
+
+  .edit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255,255,255,0.08);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    margin-left: 10px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .edit-btn:hover { background: var(--accent); color: #0f172a; border-color: var(--accent); }
+  .edit-btn.active { background: var(--green); color: #0f172a; border-color: var(--green); }
+
+  .editable-content.editing {
+    outline: 2px dashed var(--accent);
+    outline-offset: 8px;
+    background: rgba(56,189,248,0.05);
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 0.2s;
+  }
+  .editable-content.editing:focus-within { outline-style: solid; }
+
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--green);
+    color: #0f172a;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s;
+    pointer-events: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    font-size: 0.9rem;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>🇦🇺 Australia Family Adventure</h1>
+  <p><strong>Thai + wife + daughter (9) + son (11)</strong></p>
+  <p>Tuesday 7 July → Sunday 19 July 2026 · 13 days · Sydney + Melbourne</p>
+  <div class="meta">
+    <span class="pill">🤖 FLL @ Macquarie Uni</span>
+    <span class="pill">🛫 Vietnam Airlines</span>
+    <span class="pill">🏖️ Sydney · Melbourne</span>
+    <span class="pill">🏠 From Hanoi</span>
+  </div>
+</header>
+<div class="customize-bar" id="customize-bar">
+  <span class="cb-title">✨ Customize</span>
+  <span class="cb-info">Click <strong>✏️ Edit</strong> next to any section heading to modify that block. Changes are saved in your browser.</span>
+  <button onclick="downloadCustomized()">📥 Download my version</button>
+  <button onclick="resetAllEdits()" class="danger">↺ Reset all edits</button>
+</div>
+<div class="toast" id="toast">Saved ✓</div>
+
+
+<nav class="tabs" id="tabs">
+  <button class="active" data-tab="overview">Overview</button>
+  <button data-tab="visa">🛂 Visa</button>
+  <button data-tab="flights">✈️ Flights</button>
+  <button data-tab="transport">🚗 Transport</button>
+  <button data-tab="hotels">🏨 Hotels</button>
+  <button data-tab="d1">Jul 7 · Tue</button>
+  <button data-tab="d2">Jul 8 · Wed</button>
+  <button data-tab="d3">Jul 9 · Thu</button>
+  <button data-tab="d4">Jul 10 · Fri</button>
+  <button data-tab="d5">Jul 11 · Sat</button>
+  <button data-tab="d6">Jul 12 · Sun</button>
+  <button data-tab="d7">Jul 13 · Mon</button>
+  <button data-tab="d8">Jul 14 · Tue</button>
+  <button data-tab="d9">Jul 15 · Wed</button>
+  <button data-tab="d10">Jul 16 · Thu</button>
+  <button data-tab="d11">Jul 17 · Fri</button>
+  <button data-tab="d12">Jul 18 · Sat</button>
+  <button data-tab="d13">Jul 19 · Sun</button>
+  <button data-tab="budget">💰 Budget</button>
+  <button data-tab="packing">🎒 Packing</button>
+</nav>
+
+<main>
+
+<!-- ============================== OVERVIEW ============================== -->
+<section class="section active" id="overview">
+  <h2>Trip at a Glance</h2>
+  <p class="lead">A 13-day family trip centered on your son's <strong>First Lego League tournament at Macquarie University's Wattamlagul Campus</strong>, wrapping around Sydney highlights and a week exploring Melbourne.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0;">📅 Daily Summary</h3>
+    <table>
+      <thead><tr><th>Date</th><th>Day</th><th>Location</th><th>Focus</th></tr></thead>
+      <tbody>
+        <tr><td>Jul 7</td><td>Tue</td><td>Hanoi → Sydney</td><td><span class="badge b-travel">Travel</span> Depart HAN afternoon, overnight flight</td></tr>
+        <tr><td>Jul 8</td><td>Wed</td><td>Sydney (Oaks North Ryde)</td><td><span class="badge b-travel">Arrive</span> <span class="badge b-fun">Icons</span> Opera House + Botanic Gdn + Mrs Macquaries Chair + Harbour Bridge + The Rocks + Darling Harbour</td></tr>
+        <tr><td>Jul 9</td><td>Thu</td><td>Macquarie Uni</td><td><span class="badge b-event">FLL</span> Tournament Day 1</td></tr>
+        <tr><td>Jul 10</td><td>Fri</td><td>Macquarie Uni</td><td><span class="badge b-event">FLL</span> Tournament Day 2</td></tr>
+        <tr><td>Jul 11</td><td>Sat</td><td>Macquarie Uni</td><td><span class="badge b-event">FLL</span> Tournament Day 3</td></tr>
+        <tr><td>Jul 12</td><td>Sun</td><td>Macquarie Uni</td><td><span class="badge b-event">FLL</span> Finals + celebration dinner</td></tr>
+        <tr><td>Jul 13</td><td>Mon</td><td>Sydney → Melbourne</td><td><span class="badge b-fun">Koalas</span> <span class="badge b-travel">Travel</span> Koala Park AM, fly to Melbourne PM</td></tr>
+        <tr><td>Jul 14</td><td>Tue</td><td>Melbourne CBD</td><td><span class="badge b-fun">Fun</span> Melbourne Zoo + Lanes + Eureka</td></tr>
+        <tr><td>Jul 15</td><td>Wed</td><td>Great Ocean Road</td><td><span class="badge b-fun">Fun</span> Day tour – 12 Apostles</td></tr>
+        <tr><td>Jul 16</td><td>Thu</td><td>Phillip Island</td><td><span class="badge b-fun">Fun</span> Koalas + Penguin Parade</td></tr>
+        <tr><td>Jul 17</td><td>Fri</td><td>Melbourne</td><td><span class="badge b-fun">Fun</span> Scienceworks + St Kilda beach</td></tr>
+        <tr><td>Jul 18</td><td>Sat</td><td>Melbourne</td><td><span class="badge b-fun">Fun</span> Queen Vic Market + shopping</td></tr>
+        <tr><td>Jul 19</td><td>Sun</td><td>Melbourne → Hanoi</td><td><span class="badge b-travel">Travel</span> Morning flight home</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tip-box">
+    <strong>💡 Use the tab navigation above</strong> to jump to any day. Each day has its own dinner recommendations — use the <strong>cuisine filter pills</strong> to narrow down to Vietnamese, Japanese, Italian, Steakhouse, etc.
+  </div>
+
+  <h3>🎯 Key Dates & Times</h3>
+  <div class="card">
+    <div class="info-row"><span class="key">FLL Event dates</span><span class="val">Thu 9 July → Sun 12 July 2026</span></div>
+    <div class="info-row"><span class="key">Event hours</span><span class="val">8:00 AM – 4:30 PM daily</span></div>
+    <div class="info-row"><span class="key">Venue</span><span class="val">Macquarie University – Wattamlagul Campus, North Ryde, NSW</span></div>
+    <div class="info-row"><span class="key">Must stay near venue</span><span class="val">Afternoon of Tue 8 July → evening of Sun 12 July</span></div>
+    <div class="info-row"><span class="key">Outbound flight</span><span class="val">Tue 7 July (afternoon HAN → morning Wed 8 Jul SYD via SGN)</span></div>
+    <div class="info-row"><span class="key">Return flight</span><span class="val">Sun 19 July (morning MEL → evening HAN via SGN)</span></div>
+    <div class="info-row"><span class="key">Time zone</span><span class="val">Sydney/Melbourne AEST = Hanoi time + 3 hours (winter)</span></div>
+  </div>
+</section>
+
+<!-- ============================== VISA ============================== -->
+<section class="section" id="visa">
+  <h2>🛂 Australian Tourist Visa (Subclass 600)</h2>
+  <p class="lead">Vietnamese passport holders must apply for a Visitor Visa (subclass 600, Tourist stream) to enter Australia. Apply online via ImmiAccount — no stamp-on-passport issued; visa is electronic and linked to the passport.</p>
+
+  <div class="warn-box">
+    <strong>⏰ Start 10–12 weeks before departure.</strong> Processing can take 4–8+ weeks in peak season. Apply <strong>no later than late April 2026</strong> for a safety margin.
+  </div>
+
+  <h3>Key facts</h3>
+  <div class="card">
+    <div class="info-row"><span class="key">Visa</span><span class="val">Visitor Visa, Subclass 600 – Tourist stream</span></div>
+    <div class="info-row"><span class="key">Apply via</span><span class="val"><a href="https://immi.homeaffairs.gov.au/" target="_blank">immi.homeaffairs.gov.au</a> (create ImmiAccount)</span></div>
+    <div class="info-row"><span class="key">Base fee</span><span class="val">AUD 200 per applicant (≈ VND 3.4 M) + VFS service fee ~VND 1.1 M</span></div>
+    <div class="info-row"><span class="key">Family of 4 total</span><span class="val">≈ AUD 800 + VFS fees ≈ VND 18 – 20 M</span></div>
+    <div class="info-row"><span class="key">Processing time</span><span class="val">75% within 29 days · 90% within 59 days (peak can be longer)</span></div>
+    <div class="info-row"><span class="key">Validity</span><span class="val">Usually 3–12 months from grant, single or multiple entry, up to 3 months per stay</span></div>
+    <div class="info-row"><span class="key">Biometrics</span><span class="val">VFS Global Hanoi – Gelex Tower, 52 Le Dai Hanh, Hai Ba Trung</span></div>
+  </div>
+
+  <h3>Documents checklist</h3>
+  <details open>
+    <summary>🟢 For all 4 applicants</summary>
+    <ul>
+      <li>Passport valid ≥ 6 months beyond return date — scanned bio page</li>
+      <li>Recent passport-style digital photo (white background, 45x35mm)</li>
+      <li>Completed Form 1419 (Application for Visitor Visa) — generated automatically online</li>
+      <li>Signed & translated Form 54 if children are on separate applications</li>
+      <li>Round-trip flight itinerary (Vietnam Airlines — booking reference is sufficient; no need to pay yet — use hold/reserve)</li>
+      <li>Hotel bookings for entire stay (print confirmations from Booking.com/hotel)</li>
+      <li>Day-by-day travel itinerary (this file exported as PDF works)</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🟢 Financial evidence (Thai as primary sponsor)</summary>
+    <ul>
+      <li>Last 6 months personal bank statements (certified translation)</li>
+      <li>Salary confirmation letter from employer (in English or certified translation) — include position, tenure, salary, approved leave dates</li>
+      <li>Business registration + tax records if self-employed</li>
+      <li>Property ownership certificates (Sổ đỏ) as ties to Vietnam</li>
+      <li>Evidence of funds — suggest showing AUD 10,000 <small style="color:#94a3b8;">(VND 162M)</small>+ balance for a family of 4 over 13 days</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🟢 For the children (9 & 11 years)</summary>
+    <ul>
+      <li>Birth certificates with certified English translation</li>
+      <li>School letter confirming enrollment + approved absence dates</li>
+      <li>Consent letter from both parents if traveling; if both parents accompany, just include the family composition letter</li>
+      <li><strong>FLL invitation / registration confirmation for your son</strong> — strong supporting document! Print it.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🟢 Supporting documents (strongly recommended)</summary>
+    <ul>
+      <li>Cover letter explaining purpose of trip (son attending FLL tournament) — 1 page</li>
+      <li>FLL event invitation or registration confirmation</li>
+      <li>Marriage certificate (certified translation)</li>
+      <li>Previous travel history (old passport stamps or visa copies — Japan, Korea, Europe all help)</li>
+      <li>Travel insurance for entire family (recommended Bảo Việt, PTI, AIG Travel Guard or international provider)</li>
+    </ul>
+  </details>
+
+  <h3>Step-by-step process</h3>
+  <div class="timeline">
+    <div class="event">
+      <div class="time">Week −12 to −10</div>
+      <div class="what">Create ImmiAccount for Thai</div>
+      <div class="note">Add all 4 family members as applicants under one group application. Saves duplicate upload effort.</div>
+    </div>
+    <div class="event">
+      <div class="time">Week −10 to −8</div>
+      <div class="what">Prepare translations & certifications</div>
+      <div class="note">Use a sworn translator (công chứng tư pháp) for all Vietnamese documents. Budget ~VND 3M for all translations.</div>
+    </div>
+    <div class="event">
+      <div class="time">Week −8</div>
+      <div class="what">Book refundable/hold flight + hotels</div>
+      <div class="note">Hold Vietnam Airlines booking (72-hour hold available), or book fully-refundable hotels via Booking.com. Do not pay for flights until visa granted.</div>
+    </div>
+    <div class="event">
+      <div class="time">Week −8 to −6</div>
+      <div class="what">Submit online application + pay AUD 200 <small style="color:#94a3b8;">(VND 3.2M)</small> × 4</div>
+      <div class="note">Upload all documents directly to ImmiAccount. Receive HAP ID for biometrics.</div>
+    </div>
+    <div class="event">
+      <div class="time">Week −6 to −5</div>
+      <div class="what">Attend biometrics at VFS Hanoi</div>
+      <div class="note">Book appointment online. All 4 family members must attend in person. Duration ~30 min per person.</div>
+    </div>
+    <div class="event">
+      <div class="time">Week −5 to −2</div>
+      <div class="what">Await grant notification</div>
+      <div class="note">Email from DHA confirms grant. Check visa status anytime via VEVO using passport + grant number.</div>
+    </div>
+    <div class="event">
+      <div class="time">After grant</div>
+      <div class="what">Confirm flights, pay for hotels</div>
+      <div class="note">Only commit non-refundable spend once all 4 grants are received.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== FLIGHTS ============================== -->
+<section class="section" id="flights">
+  <h2>✈️ Flights – Vietnam Airlines Only</h2>
+  <p class="lead">Vietnam Airlines does not fly direct Hanoi–Sydney or Hanoi–Melbourne; all routes connect via Tan Son Nhat (SGN/Ho Chi Minh City). Approximate total travel time ~13–14h outbound, ~14–15h return.</p>
+
+  <h3>🛫 Outbound – Mon 7 July 2026 (HAN → SYD via SGN)</h3>
+
+  <div class="flight-option">
+    <div class="flight-header">
+      <div class="route">VN1175 Hanoi (HAN) → Ho Chi Minh City (SGN)</div>
+      <div class="cabin eco">Economy</div>
+    </div>
+    <div class="info-row"><span class="key">Depart</span><span class="val">17:00 (approx.) – Noi Bai T1</span></div>
+    <div class="info-row"><span class="key">Arrive</span><span class="val">19:10 – Tan Son Nhat T2 (international transit)</span></div>
+    <div class="info-row"><span class="key">Aircraft</span><span class="val">Airbus A321</span></div>
+    <div class="info-row"><span class="key">Duration</span><span class="val">2h 10m</span></div>
+  </div>
+
+  <div class="flight-option">
+    <div class="flight-header">
+      <div class="route">VN773 Ho Chi Minh City (SGN) → Sydney (SYD)</div>
+      <div class="cabin eco">Economy</div>
+    </div>
+    <div class="info-row"><span class="key">Depart</span><span class="val">20:15 (approx.)</span></div>
+    <div class="info-row"><span class="key">Arrive</span><span class="val">09:00 next day (Tue 8 Jul) – Kingsford Smith T1</span></div>
+    <div class="info-row"><span class="key">Aircraft</span><span class="val">Boeing 787-9 Dreamliner / Airbus A350-900</span></div>
+    <div class="info-row"><span class="key">Duration</span><span class="val">8h 40m</span></div>
+  </div>
+
+  <div class="flight-option premium">
+    <div class="flight-header">
+      <div class="route">VN773 SGN → SYD</div>
+      <div class="cabin prem">Premium Economy</div>
+    </div>
+    <div class="info-row"><span class="key">Cabin features</span><span class="val">38" pitch seat, 7" extra recline, priority check-in, 2 × 23kg bags, dedicated meal service</span></div>
+    <div class="info-row"><span class="key">Best for</span><span class="val">The overnight long leg (SGN–SYD / MEL–SGN) — big difference for sleep with kids</span></div>
+  </div>
+
+  <h3>🛬 Return – Sun 19 July 2026 (MEL → HAN via SGN)</h3>
+
+  <div class="flight-option">
+    <div class="flight-header">
+      <div class="route">VN780 Melbourne (MEL) → Ho Chi Minh City (SGN)</div>
+      <div class="cabin eco">Economy</div>
+    </div>
+    <div class="info-row"><span class="key">Depart</span><span class="val">11:00 (approx.) – Tullamarine T2</span></div>
+    <div class="info-row"><span class="key">Arrive</span><span class="val">16:30 – Tan Son Nhat T2</span></div>
+    <div class="info-row"><span class="key">Aircraft</span><span class="val">Boeing 787-9 Dreamliner</span></div>
+    <div class="info-row"><span class="key">Duration</span><span class="val">8h 30m</span></div>
+  </div>
+
+  <div class="flight-option">
+    <div class="flight-header">
+      <div class="route">VN1180 Ho Chi Minh City (SGN) → Hanoi (HAN)</div>
+      <div class="cabin eco">Economy</div>
+    </div>
+    <div class="info-row"><span class="key">Depart</span><span class="val">19:00 (approx.)</span></div>
+    <div class="info-row"><span class="key">Arrive</span><span class="val">21:10 – Noi Bai T1</span></div>
+    <div class="info-row"><span class="key">Layover</span><span class="val">~2h 30m in SGN</span></div>
+  </div>
+
+  <h3>💵 Indicative Fares (per person, round trip, July 2026 peak)</h3>
+  <table>
+    <thead>
+      <tr><th>Passenger</th><th>Economy (VN)</th><th>Premium Economy (VN)</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Adult (Thai)</td><td class="num">AUD 1,750-2,100 <small style="color:#94a3b8;">(VND 28M-34M)</small></td><td class="num">AUD 3,600-4,400 <small style="color:#94a3b8;">(VND 58M-71M)</small></td><td>Book 3+ months ahead for lower fares</td></tr>
+      <tr><td>Adult (wife)</td><td class="num">AUD 1,750-2,100 <small style="color:#94a3b8;">(VND 28M-34M)</small></td><td class="num">AUD 3,600-4,400 <small style="color:#94a3b8;">(VND 58M-71M)</small></td><td>Same as above</td></tr>
+      <tr><td>Child 11y (son)</td><td class="num">AUD 1,400-1,700 <small style="color:#94a3b8;">(VND 23M-28M)</small></td><td class="num">AUD 3,000-3,700 <small style="color:#94a3b8;">(VND 49M-60M)</small></td><td>Child fare ~75–85% of adult</td></tr>
+      <tr><td>Child 9y (daughter)</td><td class="num">AUD 1,400-1,700 <small style="color:#94a3b8;">(VND 23M-28M)</small></td><td class="num">AUD 3,000-3,700 <small style="color:#94a3b8;">(VND 49M-60M)</small></td><td>Child fare ~75–85% of adult</td></tr>
+      <tr><th>Family total</th><th class="num">AUD 6,300-7,600 <small style="color:#fbbf24;">(VND 102M-123M)</small></th><th class="num">AUD 13,200-16,200 <small style="color:#fbbf24;">(VND 214M-262M)</small></th><th>Rate: 1 AUD ≈ 16,200 VND</th></tr>
+    </tbody>
+  </table>
+
+  <h3>✈️ Domestic leg: Sydney → Melbourne (Mon 13 July)</h3>
+  <p>Vietnam Airlines does not fly Australian domestic routes. Book separately on:</p>
+  <div class="grid">
+    <div class="card">
+      <h4 style="margin-top:0;">Qantas QF445</h4>
+      <p>SYD 14:00 → MEL 15:35 · Full-service carrier · ~AUD 180-260 <small style="color:#94a3b8;">(VND 2.9M-4.2M)</small> one-way</p>
+    </div>
+    <div class="card">
+      <h4 style="margin-top:0;">Virgin Australia VA844</h4>
+      <p>SYD 14:30 → MEL 16:05 · Full-service · ~AUD 160-230 <small style="color:#94a3b8;">(VND 2.6M-3.7M)</small></p>
+    </div>
+    <div class="card">
+      <h4 style="margin-top:0;">Jetstar JQ514</h4>
+      <p>SYD 14:10 → MEL 15:45 · Budget · ~AUD 90-150 <small style="color:#94a3b8;">(VND 1.5M-2.4M)</small> · bag fees extra</p>
+    </div>
+  </div>
+  <div class="tip-box">
+    <strong>Recommended:</strong> Qantas 2 PM (comfortable with kids, checked baggage included) or Virgin for a slight cost saving. Avoid the last flights of the day — weather delays more likely in Melbourne winter.
+  </div>
+
+  <h3>📱 Booking channels</h3>
+  <ul>
+    <li><strong>Vietnam Airlines direct:</strong> <a href="https://www.vietnamairlines.com" target="_blank">vietnamairlines.com</a> — cheapest & direct refund/change management</li>
+    <li><strong>Lotusmiles members:</strong> Use points if you have ~40k+ per passenger; Premium Economy award tickets available</li>
+    <li><strong>Agent:</strong> Call +84 28 3920 3920 (24/7) — ask for "group booking" discount for family of 4</li>
+  </ul>
+</section>
+
+<!-- ============================== TRANSPORT ============================== -->
+<section class="section" id="transport">
+  <h2>🚗 Transport Within Australia</h2>
+  <p class="lead">Sydney and Melbourne both have excellent rideshare and public transport. Given you're with 2 kids and not driving on the left is a learning curve, the recommended setup is: <strong>taxi/Uber + Opal/Myki card + one day tour bus</strong>.</p>
+
+  <h3>🚕 Airport & long-distance transfers</h3>
+  <table>
+    <thead><tr><th>Transfer</th><th>Option</th><th>Duration</th><th>Cost (family of 4 + luggage)</th></tr></thead>
+    <tbody>
+      <tr><td>SYD airport → North Ryde hotel</td><td>Uber XL / taxi maxi</td><td>35–45 min</td><td>AUD 90-130 <small style="color:#94a3b8;">(VND 1.5M-2.1M)</small></td></tr>
+      <tr><td>SYD airport → North Ryde hotel</td><td>Airport Link train + connection</td><td>55–70 min</td><td>AUD 90 <small style="color:#94a3b8;">(VND 1.5M)</small> (3 adults + 2 kid return) ~ but hassle with 4 suitcases</td></tr>
+      <tr><td>North Ryde → SYD airport (domestic)</td><td>Uber XL</td><td>30–40 min</td><td>AUD 70-100 <small style="color:#94a3b8;">(VND 1.1M-1.6M)</small></td></tr>
+      <tr><td>MEL airport → Melbourne CBD</td><td>SkyBus</td><td>30 min</td><td>AUD 79 <small style="color:#94a3b8;">(VND 1.3M)</small> family return</td></tr>
+      <tr><td>MEL airport → Melbourne CBD</td><td>Uber XL</td><td>25–35 min</td><td>AUD 70-95 <small style="color:#94a3b8;">(VND 1.1M-1.5M)</small></td></tr>
+    </tbody>
+  </table>
+
+  <h3>🚇 Within Sydney – Opal Card</h3>
+  <div class="card">
+    <p>Pre-load on your phone (Apple Pay / Google Pay tap-and-go works) or buy physical Opal cards at the airport convenience store.</p>
+    <ul>
+      <li><strong>Kids</strong>: Children 4–15 pay concession (~50% off). Get a child Opal.</li>
+      <li><strong>Daily cap</strong>: Adult AUD 18 <small style="color:#94a3b8;">(VND 292K)</small>.70 / Sunday AUD 9.35 — Sunday is a travel bargain.</li>
+      <li><strong>Useful lines</strong>: Macquarie Uni train station (M line) is a 10-min walk to most venue buildings.</li>
+    </ul>
+  </div>
+
+  <h3>🚕 Rideshare (Uber / DiDi / Ola)</h3>
+  <div class="card">
+    <p>All three work in both cities. Prices:</p>
+    <ul>
+      <li>Uber X (up to 4 people): AUD 1.80/km base — fine for family of 4 with small bags</li>
+      <li>Uber XL (up to 6): AUD 2.50/km — use when you have big suitcases or going to airport</li>
+      <li>Uber Premier: AUD 2.80/km — nicer cars, worth it for late-night returns with sleeping kids</li>
+      <li><strong>DiDi</strong> often 10–15% cheaper than Uber in Australia — worth installing</li>
+    </ul>
+  </div>
+
+  <h3>🏫 Macquarie Uni ↔ North Ryde hotel (event days)</h3>
+  <div class="success-box">
+    <strong>Daily routine (Jul 9–12):</strong> Walk (if staying at Novotel Macquarie Park – 8 min) or Uber (4 min, ~AUD 12 <small style="color:#94a3b8;">(VND 194K)</small> each way) to the Wattamlagul Campus. Most North Ryde hotels are within 2 km of the campus. The Metro train to Macquarie University station is also a one-stop ride.
+</div>
+
+  <h3>🚐 Melbourne – Myki + day tours</h3>
+  <div class="card">
+    <ul>
+      <li><strong>Free Tram Zone</strong> in central Melbourne CBD — no Myki needed inside the zone (includes Federation Sq, Flinders St, QVM, Southern Cross)</li>
+      <li><strong>Myki card</strong> AUD 6 + AUD 5 top-up per person; kids 4 and under free, 5–15 child Myki</li>
+      <li><strong>Day tours</strong> for Great Ocean Road and Phillip Island – small group with pickup from hotel (AUD 150-200 <small style="color:#94a3b8;">(VND 2.4M-3.2M)</small>/adult, 50% off kids). Recommended over self-drive for safety & convenience.</li>
+    </ul>
+  </div>
+
+  <h3>🚫 Should you rent a car?</h3>
+  <div class="warn-box">
+    <strong>Not recommended</strong> for this trip. Australia drives on the left, Sydney CBD parking is AUD 80 <small style="color:#94a3b8;">(VND 1.3M)</small>+/day, and both your major day trips (Great Ocean Road, Phillip Island) are better done on guided tours where you can sleep on the bus and not worry about kangaroos at dusk. Uber + day tours saves ~AUD 400-600 <small style="color:#94a3b8;">(VND 6.5M-9.7M)</small> vs rental + parking + fuel.
+  </div>
+</section>
+
+<!-- ============================== HOTELS ============================== -->
+<section class="section" id="hotels">
+  <h2>🏨 Hotel Recommendations</h2>
+  <p class="lead">Two hotel bases: <strong>North Ryde / Macquarie Park</strong> for Jul 8–13 (near FLL venue), then <strong>Melbourne CBD</strong> for Jul 13–19. Recommended picks are family rooms (2 queens or 1 queen + 2 singles) with breakfast included.</p>
+
+  <h3>🛏️ Sydney – Oaks Sydney North Ryde Suites <span class="kid-tag">Confirmed choice</span></h3>
+  <p class="lead">5 nights · Wed 8 Jul → Mon 13 Jul · 1 room for all 4 family members</p>
+
+  <div class="card">
+    <h4 style="margin-top:0;">🏨 Oaks Sydney North Ryde Suites</h4>
+    <div class="info-row"><span class="key">Address</span><span class="val"><a href="https://www.google.com/maps/search/?api=1&query=54%20Waterloo%20Rd%2C%20Macquarie%20Park%20NSW%202113" target="_blank" style="color:#38bdf8;">54 Waterloo Rd, Macquarie Park NSW 2113</a></span></div>
+    <div class="info-row"><span class="key">Check-in / out</span><span class="val">Wed 8 Jul (2 PM standard – request early check-in) → Mon 13 Jul 10 AM</span></div>
+    <div class="info-row"><span class="key">Room type for 4</span><span class="val"><strong>2-Bedroom Executive Suite</strong> — 1 king + 2 singles, full kitchen, laundry, lounge. Sleeps 4 in one apartment.</span></div>
+    <div class="info-row"><span class="key">Alternative</span><span class="val">1-Bedroom Deluxe with rollaway bed (tighter but OK for 4)</span></div>
+    <div class="info-row"><span class="key">Price estimate</span><span class="val">AUD 320-420 <small style="color:#94a3b8;">(VND 5.2M-6.8M)</small> / night for 2BR in July peak · ~AUD 1,600-2,100 <small style="color:#94a3b8;">(VND 26M-34M)</small> for 5 nights</span></div>
+    <div class="info-row"><span class="key">Distance to FLL venue</span><span class="val">~1 km (12-min walk / 3-min Uber) to Macquarie Uni Wattamlagul Campus</span></div>
+    <div class="info-row"><span class="key">Distance to Macquarie Centre</span><span class="val">400 m walk (food court, cinema, IKEA, grocery)</span></div>
+    <div class="info-row"><span class="key">Distance to SYD airport</span><span class="val">~22 km / 35–45 min by car</span></div>
+    <div class="info-row"><span class="key">Distance to Sydney CBD</span><span class="val">~16 km / 25–35 min via M2 motorway</span></div>
+    <div class="info-row"><span class="key">Key amenities</span><span class="val">Full kitchen + washer/dryer in suite · free Wi-Fi · parking · concierge · BBQ deck</span></div>
+  </div>
+
+  <div class="tip-box">
+    <strong>📞 Booking tips for Oaks North Ryde:</strong>
+    <ul style="margin: 6px 0 0 0;">
+      <li>Book direct at <a href="https://www.oakshotels.com/en/oaks-sydney-north-ryde-suites" target="_blank">oakshotels.com</a> — member rate 10% off vs Booking.com</li>
+      <li>Call +61 2 9024 2000 and request 2-bedroom suite with early check-in 10–11 AM (flight arrives 9 AM Jul 8) — may incur AUD 70-100 <small style="color:#94a3b8;">(VND 1.1M-1.6M)</small> early fee but worth it on arrival day</li>
+      <li>Ask for an apartment on a higher floor (levels 5+) for quieter sleep</li>
+      <li>No breakfast included — use the in-suite kitchen, or walk to Macquarie Centre for brekky</li>
+      <li>Laundry in-suite is gold with 2 kids — you can re-wear clean clothes halfway through the trip</li>
+    </ul>
+  </div>
+
+  <h3>🛒 Stock the apartment kitchen</h3>
+  <div class="card">
+    <p>Since breakfast isn't included, make a grocery run to Coles or Woolworths in Macquarie Centre on arrival evening:</p>
+    <ul>
+      <li>Milk, cereal, bread, butter, Vegemite (try it!), eggs — AUD 35-50 <small style="color:#94a3b8;">(VND 567K-810K)</small></li>
+      <li>Fruit (apples, bananas, oranges) — AUD 15 <small style="color:#94a3b8;">(VND 243K)</small></li>
+      <li>Instant noodles / phở packets from Asian grocer — kids' backup</li>
+      <li>Tea bags, Moccona coffee, hot chocolate</li>
+      <li>Total kitchen pantry budget ~AUD 80-100 <small style="color:#94a3b8;">(VND 1.3M-1.6M)</small> saves ~AUD 200 <small style="color:#94a3b8;">(VND 3.2M)</small> in café breakfasts</li>
+    </ul>
+  </div>
+
+  <h3>🛏️ Melbourne – CBD (6 nights: Jul 13 – Jul 19)</h3>
+  <div class="grid">
+    <div class="card">
+      <h4>⭐⭐⭐⭐⭐ Sofitel Melbourne On Collins <span class="kid-tag">Recommended</span></h4>
+      <p><strong>Price:</strong> AUD 500-650 <small style="color:#94a3b8;">(VND 8.1M-11M)</small> / night, club floor deluxe</p>
+      <p><strong>Why:</strong> Levels 36–50 with stunning city views — kids will love the altitude. Inside Free Tram Zone, 2-min walk to Flinders Lane restaurants.</p>
+      <p><em><a href="https://www.google.com/maps/search/?api=1&query=25%20Collins%20St%2C%20Melbourne%20VIC%203000" target="_blank" style="color:#60a5fa;">25 Collins St, Melbourne VIC 3000</a></em></p>
+    </div>
+    <div class="card">
+      <h4>⭐⭐⭐⭐ Novotel Melbourne on Collins</h4>
+      <p><strong>Price:</strong> AUD 320-420 <small style="color:#94a3b8;">(VND 5.2M-6.8M)</small> / night family room</p>
+      <p><strong>Why:</strong> Family rooms with bunk beds for kids, central location, breakfast included. Good value.</p>
+      <p><em><a href="https://www.google.com/maps/search/?api=1&query=270%20Collins%20St%2C%20Melbourne%20VIC%203000" target="_blank" style="color:#60a5fa;">270 Collins St, Melbourne VIC 3000</a></em></p>
+    </div>
+    <div class="card">
+      <h4>⭐⭐⭐⭐ Meriton Suites World Tower</h4>
+      <p><strong>Price:</strong> AUD 380-500 <small style="color:#94a3b8;">(VND 6.2M-8.1M)</small> / night 2BR</p>
+      <p><strong>Why:</strong> Full 2-bedroom apartments on high floors, pool, gym, laundry. Perfect for 6 nights.</p>
+      <p><em><a href="https://www.google.com/maps/search/?api=1&query=575%20Flinders%20Ln%2C%20Southbank%20VIC%203006" target="_blank" style="color:#60a5fa;">575 Flinders Ln, Southbank VIC 3006</a></em></p>
+    </div>
+  </div>
+
+  <h3>📊 Accommodation budget estimate</h3>
+  <table>
+    <thead><tr><th>Leg</th><th>Nights</th><th>Room</th><th>Total</th></tr></thead>
+    <tbody>
+      <tr><td>Oaks Sydney North Ryde Suites</td><td>5 (Jul 8–13)</td><td>2BR Executive Suite</td><td class="num">AUD 1,600-2,100 <small style="color:#94a3b8;">(VND 26M-34M)</small></td></tr>
+      <tr><td>Melbourne CBD (see options above)</td><td>6 (Jul 13–19)</td><td>4★ family / 5★ / 2BR apt</td><td class="num">AUD 1,920-3,900 <small style="color:#94a3b8;">(VND 31M-63M)</small></td></tr>
+      <tr><th>Total</th><th>11</th><th></th><th class="num">AUD 3,520-6,000 <small style="color:#94a3b8;">(VND 57M-97M)</small></th></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============================== DAY 1 - Jul 7 ============================== -->
+<section class="section" id="d1">
+  <h2>Mon, 7 July · Hanoi → Sydney <span class="badge b-travel">Travel</span></h2>
+  <p class="lead">Connecting flight day. Departure from Noi Bai, connection at Tan Son Nhat, overnight to Sydney.</p>
+
+  <h3>Timeline</h3>
+  <div class="timeline">
+    <div class="event"><div class="time">14:00</div><div class="what">Leave home, head to Noi Bai T1</div><div class="note">Grab / taxi — allow 40–60 min depending on traffic</div></div>
+    <div class="event"><div class="time">14:30</div><div class="what">Check in at VN counter, Noi Bai T1</div><div class="note">3-hour window for international connection is more than enough</div></div>
+    <div class="event"><div class="time">17:00</div><div class="what">VN1175 HAN → SGN departs</div></div>
+    <div class="event"><div class="time">19:10</div><div class="what">Arrive SGN T2, transit to international departures</div><div class="note">Grab dinner at T2 food court — Phở 24, Highlands Coffee available</div></div>
+    <div class="event"><div class="time">20:15</div><div class="what">VN773 SGN → SYD departs</div><div class="note">Sleep on board — serve dinner ~21:30 then lights dim</div></div>
+  </div>
+
+  <div class="tip-box">
+    <strong>Kids tips for the long flight:</strong><br>
+    • Download Netflix / YouTube Kids offline episodes on tablets before leaving home<br>
+    • Pack noise-canceling headphones (kid-size) — VN planes can be loud<br>
+    • Small snacks (rice crackers, oranges) — helps with pressure on ear pops during descent<br>
+    • Slippers + light blanket — AC can be cold on the 787-9
+  </div>
+</section>
+
+<!-- ============================== DAY 2 - Jul 8 ============================== -->
+<section class="section" id="d2">
+  <h2>Wed, 8 July · Arrive Sydney + Full Icons Day <span class="badge b-travel">Arrive</span> <span class="badge b-fun">Icons</span></h2>
+  <p class="lead">Ambitious arrival day — drop bags at Oaks North Ryde, then knock out every Sydney bucket-list sight in one afternoon/evening: Opera House, Royal Botanic Garden, Mrs Macquarie's Chair, Harbour Bridge, The Rocks, and Darling Harbour for dinner.</p>
+
+  <div class="warn-box">
+    <strong>⚠️ Jet-lag reality check:</strong> You'll land after ~14 hours of travel. Push through — adrenaline from Sydney's skyline carries you far, and staying awake until ~9 PM local time resets body clocks fastest. If the kids flag, skip the Harbour Bridge walk and take the ferry from Circular Quay to Darling Harbour instead (easier + scenic).
+  </div>
+
+  <h3>Timeline</h3>
+  <div class="timeline">
+    <div class="event"><div class="time">09:00</div><div class="what">Arrive SYD Kingsford Smith T1</div></div>
+    <div class="event"><div class="time">09:00 – 10:30</div><div class="what">Immigration, baggage, customs (SmartGate for kids ≥ 10; son goes with you in manual lane at 11)</div><div class="note">Declare all food/medicine. Biosecurity is strict but quick if honest.</div></div>
+    <div class="event"><div class="time">10:45</div><div class="what">Uber XL to Oaks Sydney North Ryde Suites (~22 km, 35–45 min) · AUD 95-115 <small style="color:#94a3b8;">(VND 1.5M-1.9M)</small></div><div class="note">Order on app — request XL for 4 people + 4 suitcases. Driver takes M2 motorway.</div></div>
+    <div class="event"><div class="time">11:30</div><div class="what">Drop luggage at Oaks reception (request early check-in — if granted, freshen up 30 min)</div><div class="note">54 Waterloo Rd, Macquarie Park. If room not ready, bags stored free.</div></div>
+    <div class="event"><div class="time">12:00</div><div class="what">Uber to Circular Quay (25–30 min, AUD 55-70 <small style="color:#94a3b8;">(VND 891K-1.1M)</small>)</div><div class="note">Alternative: Metro from Macquarie Park station → Chatswood → North Shore line to Wynyard, then 10-min walk. Slower with kids. Uber is worth it today.</div></div>
+    <div class="event"><div class="time">12:30 – 13:45</div><div class="what">Lunch at Circular Quay <span class="kid-tag">views</span></div><div class="note">See lunch options below. Sit outside if sunny for your first Opera House + Bridge view.</div></div>
+    <div class="event"><div class="time">13:45 – 14:30</div><div class="what">Sydney Opera House exterior walk-around <span class="kid-tag">iconic</span></div><div class="note">Stroll the promenade around the sails — best photos from the forecourt steps and behind the sails at Tarpeian Way. Skip the interior tour today (save energy).</div></div>
+    <div class="event"><div class="time">14:30 – 15:15</div><div class="what">Royal Botanic Garden Sydney <span class="kid-tag">kids</span></div><div class="note">Free entry, wide paths. Walk east through the gardens — ibises and cockatoos everywhere, fig trees, flying-fox colony. ~1 km pleasant stroll.</div></div>
+    <div class="event"><div class="time">15:15 – 15:45</div><div class="what">Mrs Macquarie's Chair <span class="kid-tag">photo</span></div><div class="note">The carved sandstone seat on the peninsula. The iconic Sydney postcard angle: Opera House + Harbour Bridge framed together. Photo stop ~20 min.</div></div>
+    <div class="event"><div class="time">15:45 – 16:15</div><div class="what">Walk back through Botanic Garden → Circular Quay (~25 min)</div><div class="note">Or catch the 311 bus if legs are tired (5-min hop).</div></div>
+    <div class="event"><div class="time">16:15 – 17:15</div><div class="what">Sydney Harbour Bridge walk <span class="kid-tag">bucket list</span></div><div class="note">Free pedestrian walkway on east side. Enter at Cumberland Stairs or Bradfield Park (Milsons Point) end. Walking full crossing = 30–40 min one way; or walk halfway to the pylon and turn back (recommended with tired kids). For the full experience: Circular Quay → walk across → ferry back from Milsons Point (AUD 7/adult). The BridgeClimb is a separate paid activity not included today.</div></div>
+    <div class="event"><div class="time">17:15 – 18:15</div><div class="what">The Rocks historic district <span class="kid-tag">old town</span></div><div class="note">Sydney's original 1788 settlement. Cobblestone lanes, sandstone warehouses turned into shops/pubs. Highlights: Rocks Discovery Museum (free, 30 min), Argyle Cut arch, Cadman's Cottage (oldest house in Sydney, 1816). Kids' favorite: The Rocks Foundation Park & Susannah Place.</div></div>
+    <div class="event"><div class="time">18:15 – 18:45</div><div class="what">Walk from The Rocks → Darling Harbour (~20 min via Barangaroo waterfront)</div><div class="note">Gorgeous sunset walk along the water through Barangaroo Reserve. Alternative: light rail L2 from Wynyard → Pyrmont Bay (5 min), or Uber (~AUD 15 <small style="color:#94a3b8;">(VND 243K)</small>).</div></div>
+    <div class="event"><div class="time">18:45 – 19:30</div><div class="what">Darling Harbour sunset stroll <span class="kid-tag">fun</span></div><div class="note">King Street Wharf, fountains, tall ships, SEA LIFE Sydney Aquarium exterior, Pyrmont Bridge swing-bridge. Photo-heavy 45 min.</div></div>
+    <div class="event"><div class="time">19:30 – 21:00</div><div class="what">Dinner at Darling Harbour (see options below)</div></div>
+    <div class="event"><div class="time">21:15</div><div class="what">Uber XL back to Oaks Sydney North Ryde (~30–40 min, AUD 70-90 <small style="color:#94a3b8;">(VND 1.1M-1.5M)</small>)</div></div>
+    <div class="event"><div class="time">22:00</div><div class="what">Arrive hotel, sleep — big FLL day tomorrow</div></div>
+  </div>
+
+  <div class="tip-box">
+    <strong>🎒 What to carry for Day 1:</strong> Day packs only — light jackets (Sydney winter day 10–17°C), sunnies + cap (UV strong even in July), refillable water bottles, kids' snacks, portable phone chargers, umbrella (60% chance of showers in July), comfortable walking shoes. You'll log 10–12 km of walking today.
+  </div>
+
+  <div class="success-box">
+    <strong>💡 If you prefer to pace it:</strong> Split Day 8 — do Opera House + Botanic Garden + Mrs Macquarie's + Circular Quay lunch in the afternoon, then head to Oaks for an earlier 17:30 dinner, save Harbour Bridge + The Rocks + Darling Harbour for Jul 13 morning before the Melbourne flight. Day 13 already has time carved out for this as a fallback.
+  </div>
+
+  <h3>🍽️ Lunch — Circular Quay / Opera House</h3>
+  <div class="cuisine-bar" data-day="d2-lunch">
+    <span class="label">Filter by cuisine:</span>
+    <button class="cuisine-pill on" data-cuisine="all">All</button>
+    <button class="cuisine-pill" data-cuisine="australian">Australian</button>
+    <button class="cuisine-pill" data-cuisine="asian">Asian</button>
+    <button class="cuisine-pill" data-cuisine="western">Western</button>
+  </div>
+  <div class="dining-grid" data-day-grid="d2-lunch">
+    <div class="dine" data-cuisine="australian">
+      <span class="cuisine-tag">Modern Australian · Views</span>
+      <h5>Opera Bar <span class="kid-tag">View ★</span></h5>
+      <p class="price">AUD 30-45 <small style="color:#94a3b8;">(VND 486K-729K)</small> pp · no booking (first-come)</p>
+      <p class="desc">Right below the Opera House sails — Harbour Bridge directly in front. Wood-fired pizzas, fish tacos, fries, kids' menu. Best first-lunch-in-Sydney spot.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Lower%20Concourse%2C%20Sydney%20Opera%20House" target="_blank" style="color:#2563eb;font-weight:500;">Lower Concourse, Sydney Opera House</a></p>
+    </div>
+    <div class="dine" data-cuisine="western">
+      <span class="cuisine-tag">American · Pancakes</span>
+      <h5>Pancakes on The Rocks</h5>
+      <p class="price">AUD 25-38 <small style="color:#94a3b8;">(VND 405K-616K)</small> pp · no booking</p>
+      <p class="desc">Classic kid-friendly Sydney institution since 1975. Sweet & savory pancakes, ribs, burgers. Walk from Circular Quay in 5 min. Beloved by families.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=4%20Hickson%20Rd%2C%20The%20Rocks" target="_blank" style="color:#2563eb;font-weight:500;">4 Hickson Rd, The Rocks</a></p>
+    </div>
+    <div class="dine" data-cuisine="asian">
+      <span class="cuisine-tag">Chinese · Dumplings</span>
+      <h5>Din Tai Fung World Square</h5>
+      <p class="price">AUD 30-45 <small style="color:#94a3b8;">(VND 486K-729K)</small> pp · book on app</p>
+      <p class="desc">Quick comfort food after flight — xiaolongbao, fried rice, kids' chicken & noodles. 10-min Uber/walk from Circular Quay.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=World%20Square%2C%20644%20George%20St%2C%20Sydney%20CBD" target="_blank" style="color:#2563eb;font-weight:500;">World Square, 644 George St, Sydney CBD</a></p>
+    </div>
+  </div>
+
+  <h3>🍽️ Dinner — Darling Harbour</h3>
+  <div class="cuisine-bar" data-day="d2-dinner">
+    <span class="label">Filter by cuisine:</span>
+    <button class="cuisine-pill on" data-cuisine="all">All</button>
+    <button class="cuisine-pill" data-cuisine="seafood">Seafood</button>
+    <button class="cuisine-pill" data-cuisine="italian">Italian</button>
+    <button class="cuisine-pill" data-cuisine="asian">SE Asian</button>
+  </div>
+  <div class="dining-grid" data-day-grid="d2-dinner">
+    <div class="dine" data-cuisine="seafood">
+      <span class="cuisine-tag">Seafood · Harbour view</span>
+      <h5>Nick's Seafood Cockle Bay <span class="kid-tag">View ★</span></h5>
+      <p class="price">AUD 60-95 <small style="color:#94a3b8;">(VND 972K-1.5M)</small> pp · book ahead</p>
+      <p class="desc">Famous seafood platter — lobster, Balmain bugs, oysters, prawns, grilled fish. Waterside outdoor tables. Kids' fish & chips AUD 22 <small style="color:#94a3b8;">(VND 356K)</small>.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Cockle%20Bay%20Wharf%2C%20Darling%20Harbour" target="_blank" style="color:#2563eb;font-weight:500;">Cockle Bay Wharf, Darling Harbour</a></p>
+    </div>
+    <div class="dine" data-cuisine="italian">
+      <span class="cuisine-tag">Italian · Pizza & Pasta</span>
+      <h5>Criniti's Darling Harbour</h5>
+      <p class="price">AUD 35-55 <small style="color:#94a3b8;">(VND 567K-891K)</small> pp · book online</p>
+      <p class="desc">Huge Italian-American menu — metre-long pizzas, family-size pasta bowls. Designed for kids — menu includes mini margheritas and spaghetti bolognese. Marina terrace.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=The%20Promenade%2C%20King%20Street%20Wharf%2C%20Darling%20Harbour" target="_blank" style="color:#2563eb;font-weight:500;">The Promenade, King Street Wharf, Darling Harbour</a></p>
+    </div>
+    <div class="dine" data-cuisine="asian">
+      <span class="cuisine-tag">SE Asian · Fusion</span>
+      <h5>Malaya On George</h5>
+      <p class="price">AUD 45-65 <small style="color:#94a3b8;">(VND 729K-1.1M)</small> pp · book ahead</p>
+      <p class="desc">Sydney classic since 1963. Laksa, beef rendang, char kway teow, satay. Harbour view from King St Wharf. Warm spices perfect for cold winter night.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=39%20Lime%20St%2C%20King%20Street%20Wharf%2C%20Darling%20Harbour" target="_blank" style="color:#2563eb;font-weight:500;">39 Lime St, King Street Wharf, Darling Harbour</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== DAY 3 - Jul 9 ============================== -->
+<section class="section" id="d3">
+  <h2>Thu, 9 July · FLL Day 1 <span class="badge b-event">FLL</span></h2>
+  <p class="lead">First day of the tournament. 8:00 AM start → 4:30 PM finish. After the long event day, keep dinner close to the hotel and easy.</p>
+
+  <h3>Timeline</h3>
+  <div class="timeline">
+    <div class="event"><div class="time">06:30</div><div class="what">Breakfast at hotel</div></div>
+    <div class="event"><div class="time">07:30</div><div class="what">Walk / 5-min Uber to Macquarie University Wattamlagul Campus</div><div class="note">Bring: registration confirmation, water bottle, snacks, son's team t-shirt, jacket (July is Sydney winter, 8–16°C)</div></div>
+    <div class="event"><div class="time">08:00 – 16:30</div><div class="what">FLL Tournament Day 1</div><div class="note">Opening ceremony, robot rounds, project presentations</div></div>
+    <div class="event"><div class="time">16:30</div><div class="what">Pick up team, Uber back to hotel</div></div>
+    <div class="event"><div class="time">17:15</div><div class="what">Quick rest / shower</div></div>
+    <div class="event"><div class="time">18:30</div><div class="what">Dinner</div></div>
+    <div class="event"><div class="time">20:30</div><div class="what">Hotel — early bed</div></div>
+  </div>
+
+  <h3>🍽️ Dinner — Thu 9 July</h3>
+  <div class="cuisine-bar" data-day="d3">
+    <span class="label">Filter by cuisine:</span>
+    <button class="cuisine-pill on" data-cuisine="all">All</button>
+    <button class="cuisine-pill" data-cuisine="japanese">Japanese</button>
+    <button class="cuisine-pill" data-cuisine="vietnamese">Vietnamese</button>
+    <button class="cuisine-pill" data-cuisine="chinese">Chinese</button>
+  </div>
+  <div class="dining-grid" data-day-grid="d3">
+    <div class="dine" data-cuisine="japanese">
+      <span class="cuisine-tag">Japanese</span>
+      <h5>Ichiban Boshi Top Ryde</h5>
+      <p class="price">AUD 25-38 <small style="color:#94a3b8;">(VND 405K-616K)</small> pp · bookings recommended</p>
+      <p class="desc">Huge sushi menu, teppanyaki, kids bento box. Clean, bright, kid-friendly. 10-min drive.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Top%20Ryde%20City%2C%20109-129%20Blaxland%20Rd%2C%20Ryde" target="_blank" style="color:#2563eb;font-weight:500;">Top Ryde City, 109-129 Blaxland Rd, Ryde</a></p>
+    </div>
+    <div class="dine" data-cuisine="vietnamese">
+      <span class="cuisine-tag">Vietnamese</span>
+      <h5>Phở 236 – North Ryde</h5>
+      <p class="price">AUD 15-22 <small style="color:#94a3b8;">(VND 243K-356K)</small> pp</p>
+      <p class="desc">Authentic phở bò, bún bò Huế, cơm tấm. Taste of home after a long day — kids' broth bowls under AUD 10 <small style="color:#94a3b8;">(VND 162K)</small>.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=236%20Lane%20Cove%20Rd%2C%20North%20Ryde" target="_blank" style="color:#2563eb;font-weight:500;">236 Lane Cove Rd, North Ryde</a></p>
+    </div>
+    <div class="dine" data-cuisine="chinese">
+      <span class="cuisine-tag">Chinese · Taiwanese</span>
+      <h5>Din Tai Fung – Macquarie Centre</h5>
+      <p class="price">AUD 30-45 <small style="color:#94a3b8;">(VND 486K-729K)</small> pp · book ahead</p>
+      <p class="desc">World-famous xiaolongbao. Kids mesmerized watching dumpling chefs through glass. Walk from Novotel.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Macquarie%20Centre%20L3%2C%20Herring%20Rd" target="_blank" style="color:#2563eb;font-weight:500;">Macquarie Centre L3, Herring Rd</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== DAY 4 - Jul 10 ============================== -->
+<section class="section" id="d4">
+  <h2>Fri, 10 July · FLL Day 2 <span class="badge b-event">FLL</span></h2>
+  <p class="lead">Day 2 of the tournament. Same routine — get to venue by 8am, home by 5pm.</p>
+
+  <h3>Timeline</h3>
+  <div class="timeline">
+    <div class="event"><div class="time">06:30 – 07:30</div><div class="what">Breakfast + walk to venue</div></div>
+    <div class="event"><div class="time">08:00 – 16:30</div><div class="what">FLL Tournament Day 2</div></div>
+    <div class="event"><div class="time">17:00</div><div class="what">Return to hotel</div></div>
+    <div class="event"><div class="time">18:00</div><div class="what">Dinner</div></div>
+  </div>
+
+  <div class="tip-box">
+    <strong>Parent/sibling optional side trip:</strong> While son is at FLL, wife & daughter could explore on a shorter outing — e.g., a morning visit to Lane Cove National Park (20 min walk/river trail, koala sightings) and return by early afternoon for last rounds of the day.
+  </div>
+
+  <h3>🍽️ Dinner — Fri 10 July</h3>
+  <div class="cuisine-bar" data-day="d4">
+    <span class="label">Filter by cuisine:</span>
+    <button class="cuisine-pill on" data-cuisine="all">All</button>
+    <button class="cuisine-pill" data-cuisine="indian">Indian</button>
+    <button class="cuisine-pill" data-cuisine="steakhouse">Steakhouse</button>
+    <button class="cuisine-pill" data-cuisine="thai">Thai</button>
+  </div>
+  <div class="dining-grid" data-day-grid="d4">
+    <div class="dine" data-cuisine="indian">
+      <span class="cuisine-tag">Indian</span>
+      <h5>Zaaffran Indian Macquarie</h5>
+      <p class="price">AUD 25-35 <small style="color:#94a3b8;">(VND 405K-567K)</small> pp</p>
+      <p class="desc">North Indian classics — butter chicken, biryani, naan. Mild options for kids, plenty of vegetarian. Cozy.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Shop%202%2C%20115%20Talavera%20Rd%2C%20Macquarie%20Park" target="_blank" style="color:#2563eb;font-weight:500;">Shop 2, 115 Talavera Rd, Macquarie Park</a></p>
+    </div>
+    <div class="dine" data-cuisine="steakhouse">
+      <span class="cuisine-tag">Steakhouse</span>
+      <h5>Ribs & Rumps Macquarie</h5>
+      <p class="price">AUD 35-55 <small style="color:#94a3b8;">(VND 567K-891K)</small> pp</p>
+      <p class="desc">American-style steakhouse. Kids menu with ribs/chicken, adults go for the rib eye and slow-cooked pork ribs. Good for celebration mood.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Macquarie%20Centre%2C%20Herring%20Rd" target="_blank" style="color:#2563eb;font-weight:500;">Macquarie Centre, Herring Rd</a></p>
+    </div>
+    <div class="dine" data-cuisine="thai">
+      <span class="cuisine-tag">Thai</span>
+      <h5>Chat Thai North Ryde</h5>
+      <p class="price">AUD 22-32 <small style="color:#94a3b8;">(VND 356K-518K)</small> pp</p>
+      <p class="desc">Bangkok-style Thai with pad thai, green curry, crispy pork belly. Spicy levels adjustable for kids.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Near%20Macquarie%20Park%20Metro%20station" target="_blank" style="color:#2563eb;font-weight:500;">Near Macquarie Park Metro station</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== DAY 5 - Jul 11 ============================== -->
+<section class="section" id="d5">
+  <h2>Sat, 11 July · FLL Day 3 <span class="badge b-event">FLL</span></h2>
+  <p class="lead">Semifinal round day. Saturday, so venue will be busiest and most exciting — families & supporters out in force.</p>
+
+  <h3>Timeline</h3>
+  <div class="timeline">
+    <div class="event"><div class="time">07:00 – 07:45</div><div class="what">Breakfast + walk to venue</div></div>
+    <div class="event"><div class="time">08:00 – 16:30</div><div class="what">FLL Tournament Day 3 – semifinal rounds</div></div>
+    <div class="event"><div class="time">17:00</div><div class="what">Return to hotel</div></div>
+    <div class="event"><div class="time">18:30</div><div class="what">Dinner</div></div>
+  </div>
+
+  <h3>🍽️ Dinner — Sat 11 July</h3>
+  <div class="cuisine-bar" data-day="d5">
+    <span class="label">Filter by cuisine:</span>
+    <button class="cuisine-pill on" data-cuisine="all">All</button>
+    <button class="cuisine-pill" data-cuisine="korean">Korean</button>
+    <button class="cuisine-pill" data-cuisine="seafood">Seafood</button>
+    <button class="cuisine-pill" data-cuisine="australian">Australian</button>
+  </div>
+  <div class="dining-grid" data-day-grid="d5">
+    <div class="dine" data-cuisine="korean">
+      <span class="cuisine-tag">Korean · BBQ</span>
+      <h5>Dong Il Jang Korean BBQ</h5>
+      <p class="price">AUD 40-55 <small style="color:#94a3b8;">(VND 648K-891K)</small> pp · book ahead Sat</p>
+      <p class="desc">Table-top charcoal grilling — kids love cooking their own. Banchan included. Order bulgogi + galbi + japchae.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Eastwood%20%2810%20min%20drive%20from%20North%20Ryde%29" target="_blank" style="color:#2563eb;font-weight:500;">Eastwood (10 min drive from North Ryde)</a></p>
+    </div>
+    <div class="dine" data-cuisine="seafood">
+      <span class="cuisine-tag">Seafood</span>
+      <h5>Fish Shop – Lane Cove</h5>
+      <p class="price">AUD 25-40 <small style="color:#94a3b8;">(VND 405K-648K)</small> pp</p>
+      <p class="desc">Premium fish & chips, grilled barramundi, prawn platters. Kids get chippy with tiny hot dog add-on.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Lane%20Cove%20Plaza%2C%20Longueville%20Rd" target="_blank" style="color:#2563eb;font-weight:500;">Lane Cove Plaza, Longueville Rd</a></p>
+    </div>
+    <div class="dine" data-cuisine="australian">
+      <span class="cuisine-tag">Australian</span>
+      <h5>The Ranch Hotel North Ryde</h5>
+      <p class="price">AUD 28-40 <small style="color:#94a3b8;">(VND 454K-648K)</small> pp</p>
+      <p class="desc">Historic 1850s country pub, now a gastropub. Kids' playground outside, hearty steaks, fish, parma inside.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Corner%20Epping%20Rd%20%26%20Herring%20Rd%2C%20Eastwood" target="_blank" style="color:#2563eb;font-weight:500;">Corner Epping Rd & Herring Rd, Eastwood</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== DAY 6 - Jul 12 ============================== -->
+<section class="section" id="d6">
+  <h2>Sun, 12 July · FLL Finals + Celebration <span class="badge b-event">FLL</span></h2>
+  <p class="lead">Last tournament day — finals, awards, closing ceremony. Time for a proper celebration dinner tonight (win or not, finishing is the win).</p>
+
+  <h3>Timeline</h3>
+  <div class="timeline">
+    <div class="event"><div class="time">07:00 – 07:45</div><div class="what">Breakfast + walk to venue</div></div>
+    <div class="event"><div class="time">08:00 – 14:00</div><div class="what">Finals matches</div></div>
+    <div class="event"><div class="time">14:30 – 16:30</div><div class="what">Awards ceremony + closing</div></div>
+    <div class="event"><div class="time">17:00 – 17:45</div><div class="what">Return to hotel, shower & change (smart casual for Sydney dinner)</div></div>
+    <div class="event"><div class="time">18:30</div><div class="what">Uber to Circular Quay / Darling Harbour (30 min) — dinner & harbor view</div></div>
+    <div class="event"><div class="time">19:30 – 21:30</div><div class="what">Celebration dinner overlooking Sydney Harbour <span class="kid-tag">special</span></div></div>
+    <div class="event"><div class="time">22:00</div><div class="what">Return to hotel — last night in North Ryde</div></div>
+  </div>
+
+  <h3>🍽️ Celebration Dinner — Sun 12 July</h3>
+  <div class="cuisine-bar" data-day="d6">
+    <span class="label">Filter by cuisine:</span>
+    <button class="cuisine-pill on" data-cuisine="all">All</button>
+    <button class="cuisine-pill" data-cuisine="australian">Australian Fine Dining</button>
+    <button class="cuisine-pill" data-cuisine="japanese">Japanese</button>
+    <button class="cuisine-pill" data-cuisine="seafood">Seafood</button>
+  </div>
+  <div class="dining-grid" data-day-grid="d6">
+    <div class="dine" data-cuisine="australian">
+      <span class="cuisine-tag">Modern Australian · Views</span>
+      <h5>Café Sydney <span class="kid-tag">View ★</span></h5>
+      <p class="price">AUD 90-130 <small style="color:#94a3b8;">(VND 1.5M-2.1M)</small> pp · book 2+ weeks ahead</p>
+      <p class="desc">Rooftop over Circular Quay — Opera House & Harbour Bridge views at sunset. Kid menu available. Take the Uber, not Metro — avoid cold walk.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Level%205%2C%20Customs%20House%2C%2031%20Alfred%20St%2C%20Sydney" target="_blank" style="color:#2563eb;font-weight:500;">Level 5, Customs House, 31 Alfred St, Sydney</a></p>
+    </div>
+    <div class="dine" data-cuisine="seafood">
+      <span class="cuisine-tag">Seafood</span>
+      <h5>Nick's Seafood Cockle Bay</h5>
+      <p class="price">AUD 60-95 <small style="color:#94a3b8;">(VND 972K-1.5M)</small> pp</p>
+      <p class="desc">Famous seafood platter for the family. Waterside setting in Darling Harbour. Kids' fish & chips at AUD 22 <small style="color:#94a3b8;">(VND 356K)</small>.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Cockle%20Bay%20Wharf%2C%20Darling%20Harbour" target="_blank" style="color:#2563eb;font-weight:500;">Cockle Bay Wharf, Darling Harbour</a></p>
+    </div>
+    <div class="dine" data-cuisine="japanese">
+      <span class="cuisine-tag">Japanese · Fine dining</span>
+      <h5>Sokyo – The Star</h5>
+      <p class="price">AUD 150-220 <small style="color:#94a3b8;">(VND 2.4M-3.6M)</small> pp · book 3 weeks ahead</p>
+      <p class="desc">Ex-Nobu chef Chase Kojima. High-end omakase or à la carte. Great if you want a real milestone meal. Less kid-friendly — consider booking earlier 18:00 seating.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=The%20Star%2C%2080%20Pyrmont%20St%2C%20Pyrmont" target="_blank" style="color:#2563eb;font-weight:500;">The Star, 80 Pyrmont St, Pyrmont</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== DAY 7 - Jul 13 ============================== -->
+<section class="section" id="d7">
+  <h2>Mon, 13 July · Koalas + Fly to Melbourne <span class="badge b-fun">Wildlife</span> <span class="badge b-travel">Travel</span></h2>
+  <p class="lead">Sydney icons are done on Day 1 — so today is the "Australian wildlife" morning. Koala Park Sanctuary (15 min from Oaks) lets the kids hand-feed kangaroos and stand next to koalas. Afternoon flight to Melbourne.</p>
+
+  <h3>Timeline</h3>
+  <div class="timeline">
+    <div class="event"><div class="time">07:30</div><div class="what">Breakfast at Oaks (in-suite kitchen) / Macquarie Centre café</div></div>
+    <div class="event"><div class="time">08:45</div><div class="what">Check out of Oaks, store luggage at reception</div></div>
+    <div class="event"><div class="time">09:00</div><div class="what">Uber to Koala Park Sanctuary, West Pennant Hills (15 min · AUD 25 <small style="color:#94a3b8;">(VND 405K)</small>)</div><div class="note">Entry AUD 35 <small style="color:#94a3b8;">(VND 567K)</small> adult / 18 child. Buy online for fast entry.</div></div>
+    <div class="event"><div class="time">09:30 – 11:30</div><div class="what">Koala Park Sanctuary <span class="kid-tag">kids LOVE</span></div><div class="note">Free-roaming kangaroos to hand-feed, wombats, dingoes, emus. Koala feeding presentations at 10:20 & 11:45 — stand next to a koala for photos (cuddling not allowed in NSW law, but very close contact allowed). 2 hours is plenty.</div></div>
+    <div class="event"><div class="time">11:45</div><div class="what">Uber back to Oaks North Ryde, collect luggage (15 min · AUD 25 <small style="color:#94a3b8;">(VND 405K)</small>)</div></div>
+    <div class="event"><div class="time">12:15 – 13:15</div><div class="what">Lunch at Macquarie Centre (options below) + last shopping</div></div>
+    <div class="event"><div class="time">13:30</div><div class="what">Uber XL to Sydney Airport T2 Domestic (~30–45 min · AUD 80-100 <small style="color:#94a3b8;">(VND 1.3M-1.6M)</small>)</div></div>
+    <div class="event"><div class="time">14:30</div><div class="what">Check in domestic flight</div></div>
+    <div class="event"><div class="time">16:30</div><div class="what">Flight SYD → MEL (Qantas/Virgin/Jetstar · 1h 35m)</div></div>
+    <div class="event"><div class="time">18:10</div><div class="what">Arrive MEL Tullamarine</div></div>
+    <div class="event"><div class="time">19:00</div><div class="what">Uber XL to Melbourne CBD hotel (~30 min · AUD 80-95 <small style="color:#94a3b8;">(VND 1.3M-1.5M)</small>)</div></div>
+    <div class="event"><div class="time">19:45</div><div class="what">Check in Melbourne hotel</div></div>
+    <div class="event"><div class="time">20:30</div><div class="what">Dinner nearby (options below)</div></div>
+  </div>
+
+  <div class="tip-box">
+    <strong>🐨 Alternative morning options:</strong>
+    <ul style="margin: 6px 0 0 0;">
+      <li><strong>Featherdale Wildlife Park</strong> (Doonside, 40 min from Oaks) — bigger park, Tasmanian devils, penguins, but adds Uber cost (~AUD 80 <small style="color:#94a3b8;">(VND 1.3M)</small> round trip)</li>
+      <li><strong>Lane Cove National Park</strong> (5 min from Oaks) — free, self-guided walking tracks, sometimes wild koala spotting. Less guaranteed but a peaceful bushland morning.</li>
+      <li><strong>SEA LIFE Sydney Aquarium</strong> (Darling Harbour) — combine with last Sydney view, but requires CBD trip before airport = tight timeline. Only if skipping the Koala Park plan.</li>
+    </ul>
+  </div>
+
+  <h3>🍽️ Lunch — Macquarie Centre (before flight)</h3>
+  <div class="cuisine-bar" data-day="d7-lunch">
+    <span class="label">Filter by cuisine:</span>
+    <button class="cuisine-pill on" data-cuisine="all">All</button>
+    <button class="cuisine-pill" data-cuisine="asian">Asian</button>
+    <button class="cuisine-pill" data-cuisine="australian">Australian</button>
+    <button class="cuisine-pill" data-cuisine="western">Western</button>
+  </div>
+  <div class="dining-grid" data-day-grid="d7-lunch">
+    <div class="dine" data-cuisine="asian">
+      <span class="cuisine-tag">Japanese · Sushi Train</span>
+      <h5>Sushi Train Macquarie</h5>
+      <p class="price">AUD 20-30 <small style="color:#94a3b8;">(VND 324K-486K)</small> pp · no booking</p>
+      <p class="desc">Pick plates off the conveyor — kids love it. Quick, light, won't weigh down the flight. In the Macquarie Centre food court.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Macquarie%20Centre%20L3" target="_blank" style="color:#2563eb;font-weight:500;">Macquarie Centre L3</a></p>
+    </div>
+    <div class="dine" data-cuisine="australian">
+      <span class="cuisine-tag">Australian</span>
+      <h5>Grill'd Macquarie</h5>
+      <p class="price">AUD 18-25 <small style="color:#94a3b8;">(VND 292K-405K)</small> pp</p>
+      <p class="desc">Healthy burgers — your last Aussie burger before Melbourne. Kids' combo with fries & drink AUD 12 <small style="color:#94a3b8;">(VND 194K)</small>.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Macquarie%20Centre%20L3" target="_blank" style="color:#2563eb;font-weight:500;">Macquarie Centre L3</a></p>
+    </div>
+    <div class="dine" data-cuisine="western">
+      <span class="cuisine-tag">Pasta</span>
+      <h5>Italian Bowl</h5>
+      <p class="price">AUD 18-28 <small style="color:#94a3b8;">(VND 292K-454K)</small> pp</p>
+      <p class="desc">Quick pasta / pizza / lasagna. Fast turnaround. Light enough before a short flight.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Macquarie%20Centre%20L2" target="_blank" style="color:#2563eb;font-weight:500;">Macquarie Centre L2</a></p>
+    </div>
+  </div>
+
+  <h3>🍽️ Dinner — Melbourne arrival</h3>
+  <div class="cuisine-bar" data-day="d7-dinner">
+    <span class="label">Filter by cuisine:</span>
+    <button class="cuisine-pill on" data-cuisine="all">All</button>
+    <button class="cuisine-pill" data-cuisine="asian">Asian</button>
+    <button class="cuisine-pill" data-cuisine="italian">Italian</button>
+    <button class="cuisine-pill" data-cuisine="western">Western</button>
+  </div>
+  <div class="dining-grid" data-day-grid="d7-dinner">
+    <div class="dine" data-cuisine="asian">
+      <span class="cuisine-tag">Vietnamese</span>
+      <h5>Pho Nom Emporium</h5>
+      <p class="price">AUD 18-28 <small style="color:#94a3b8;">(VND 292K-454K)</small> pp</p>
+      <p class="desc">Quick, delicious phở and bún — taste of home after travel day. Easy with tired kids.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Emporium%20Melbourne%2C%20Level%203%2C%20287%20Lonsdale%20St" target="_blank" style="color:#2563eb;font-weight:500;">Emporium Melbourne, Level 3, 287 Lonsdale St</a></p>
+    </div>
+    <div class="dine" data-cuisine="italian">
+      <span class="cuisine-tag">Italian</span>
+      <h5>400 Gradi Lygon Street</h5>
+      <p class="price">AUD 30-45 <small style="color:#94a3b8;">(VND 486K-729K)</small> pp</p>
+      <p class="desc">World-champion pizza (literally — 2014 winner). Kids' margarita AUD 14 <small style="color:#94a3b8;">(VND 227K)</small>. Lygon St = Melbourne's "Little Italy".</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=99%20Lygon%20St%2C%20Brunswick%20East" target="_blank" style="color:#2563eb;font-weight:500;">99 Lygon St, Brunswick East</a></p>
+    </div>
+    <div class="dine" data-cuisine="western">
+      <span class="cuisine-tag">Australian · Burgers</span>
+      <h5>Royal Stacks Collins St</h5>
+      <p class="price">AUD 20-30 <small style="color:#94a3b8;">(VND 324K-486K)</small> pp</p>
+      <p class="desc">Melbourne's best burger chain. Kid combos with shake + fries. Fast, simple, reliable.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=470%20Collins%20St%2C%20Melbourne%20CBD" target="_blank" style="color:#2563eb;font-weight:500;">470 Collins St, Melbourne CBD</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== DAY 8 - Jul 14 ============================== -->
+<section class="section" id="d8">
+  <h2>Tue, 14 July · Melbourne CBD & Zoo <span class="badge b-fun">Fun</span></h2>
+  <p class="lead">Full day exploring central Melbourne — Queen Victoria Market, Melbourne Zoo, Eureka Skydeck at sunset.</p>
+
+  <h3>Timeline</h3>
+  <div class="timeline">
+    <div class="event"><div class="time">08:30</div><div class="what">Breakfast at hotel</div></div>
+    <div class="event"><div class="time">09:30 – 11:00</div><div class="what">Queen Victoria Market <span class="kid-tag">kids</span></div><div class="note">Iconic market, free to wander. Fresh juice, donuts, dim sum stalls. Free tram zone.</div></div>
+    <div class="event"><div class="time">11:15 – 14:00</div><div class="what">Melbourne Zoo <span class="kid-tag">kids</span></div><div class="note">Tram 58 direct from QVM. 320+ species — koalas, kangaroos, penguins in one place. Allow 2.5 hours.</div></div>
+    <div class="event"><div class="time">14:00 – 14:45</div><div class="what">Lunch (see options)</div></div>
+    <div class="event"><div class="time">15:15 – 17:00</div><div class="what">Federation Square + ACMI (Moving Image) + The Lanes</div><div class="note">Hosier Lane street art, Degraves Lane café culture</div></div>
+    <div class="event"><div class="time">17:30 – 19:00</div><div class="what">Eureka Skydeck 88 <span class="kid-tag">kids</span></div><div class="note">Sunset views from 88th floor. The Edge — glass cube extending from building — is a thrill. Book online AUD 29 <small style="color:#94a3b8;">(VND 470K)</small> adult / 18 child.</div></div>
+    <div class="event"><div class="time">19:30</div><div class="what">Dinner (see options)</div></div>
+  </div>
+
+  <h3>🍽️ Lunch — Tue 14 July</h3>
+  <div class="cuisine-bar" data-day="d8-lunch">
+    <span class="label">Filter by cuisine:</span>
+    <button class="cuisine-pill on" data-cuisine="all">All</button>
+    <button class="cuisine-pill" data-cuisine="asian">Asian</button>
+    <button class="cuisine-pill" data-cuisine="western">Western</button>
+    <button class="cuisine-pill" data-cuisine="cafe">Café</button>
+  </div>
+  <div class="dining-grid" data-day-grid="d8-lunch">
+    <div class="dine" data-cuisine="asian">
+      <span class="cuisine-tag">Dim Sum</span>
+      <h5>HuTong Dumpling Bar</h5>
+      <p class="price">AUD 25-38 <small style="color:#94a3b8;">(VND 405K-616K)</small> pp</p>
+      <p class="desc">Legendary xiaolongbao in Chinatown. Arrive by 12:30 or queue 30 min. Best dumplings in Melbourne.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=14-16%20Market%20Ln%2C%20Melbourne%20CBD" target="_blank" style="color:#2563eb;font-weight:500;">14-16 Market Ln, Melbourne CBD</a></p>
+    </div>
+    <div class="dine" data-cuisine="cafe">
+      <span class="cuisine-tag">Café</span>
+      <h5>Hardware Société</h5>
+      <p class="price">AUD 20-32 <small style="color:#94a3b8;">(VND 324K-518K)</small> pp</p>
+      <p class="desc">Famous Melbourne brunch café — poached eggs, French toast, croissants. Very kid-friendly atmosphere.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=123%20Hardware%20St%2C%20Melbourne" target="_blank" style="color:#2563eb;font-weight:500;">123 Hardware St, Melbourne</a></p>
+    </div>
+    <div class="dine" data-cuisine="western">
+      <span class="cuisine-tag">Burgers</span>
+      <h5>Huxtaburger Flinders Lane</h5>
+      <p class="price">AUD 18-28 <small style="color:#94a3b8;">(VND 292K-454K)</small> pp</p>
+      <p class="desc">Cult Melbourne burger joint. Kids meal AUD 12 <small style="color:#94a3b8;">(VND 194K)</small> with fries + drink.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=106%20Flinders%20Ln" target="_blank" style="color:#2563eb;font-weight:500;">106 Flinders Ln</a></p>
+    </div>
+  </div>
+
+  <h3>🍽️ Dinner — Tue 14 July</h3>
+  <div class="cuisine-bar" data-day="d8-dinner">
+    <span class="label">Filter by cuisine:</span>
+    <button class="cuisine-pill on" data-cuisine="all">All</button>
+    <button class="cuisine-pill" data-cuisine="steakhouse">Steakhouse</button>
+    <button class="cuisine-pill" data-cuisine="japanese">Japanese</button>
+    <button class="cuisine-pill" data-cuisine="asian">Asian</button>
+  </div>
+  <div class="dining-grid" data-day-grid="d8-dinner">
+    <div class="dine" data-cuisine="steakhouse">
+      <span class="cuisine-tag">Steakhouse</span>
+      <h5>Vlado's Steakhouse</h5>
+      <p class="price">AUD 90-130 <small style="color:#94a3b8;">(VND 1.5M-2.1M)</small> pp</p>
+      <p class="desc">A Melbourne institution since 1963. No menu — you eat what they serve. Premium grassfed cuts. Book ahead.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=61%20Bridge%20Rd%2C%20Richmond" target="_blank" style="color:#2563eb;font-weight:500;">61 Bridge Rd, Richmond</a></p>
+    </div>
+    <div class="dine" data-cuisine="japanese">
+      <span class="cuisine-tag">Japanese</span>
+      <h5>Izakaya Chuji</h5>
+      <p class="price">AUD 50-75 <small style="color:#94a3b8;">(VND 810K-1.2M)</small> pp</p>
+      <p class="desc">Authentic izakaya — skewers, sashimi, tempura. Kids love the yakitori skewers.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=165%20Lonsdale%20St%2C%20Melbourne" target="_blank" style="color:#2563eb;font-weight:500;">165 Lonsdale St, Melbourne</a></p>
+    </div>
+    <div class="dine" data-cuisine="asian">
+      <span class="cuisine-tag">Taiwanese</span>
+      <h5>Din Tai Fung Emporium</h5>
+      <p class="price">AUD 30-45 <small style="color:#94a3b8;">(VND 486K-729K)</small> pp</p>
+      <p class="desc">Reliable family favorite. No disappointing this crew.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Emporium%20Melbourne%20L4" target="_blank" style="color:#2563eb;font-weight:500;">Emporium Melbourne L4</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== DAY 9 - Jul 15 ============================== -->
+<section class="section" id="d9">
+  <h2>Wed, 15 July · Great Ocean Road Tour <span class="badge b-fun">Fun</span></h2>
+  <p class="lead">Full-day bus tour to the iconic Great Ocean Road — 12 Apostles, Loch Ard Gorge, rainforest walks, wild koalas. ~13 hours door-to-door but worth every minute.</p>
+
+  <div class="tip-box">
+    <strong>📌 Book ahead</strong> — <a href="https://www.autopia.com.au/" target="_blank">Autopia Tours</a> or <a href="https://www.gol.com.au/" target="_blank">Gray Line</a>. Small-group tours AUD 165 <small style="color:#94a3b8;">(VND 2.7M)</small>/adult, 50% off kids. Include hotel pickup ~6:45 AM, return ~8:00 PM.
+  </div>
+
+  <h3>Timeline</h3>
+  <div class="timeline">
+    <div class="event"><div class="time">06:00</div><div class="what">Wake up + hotel breakfast</div></div>
+    <div class="event"><div class="time">06:45</div><div class="what">Hotel pickup by tour</div></div>
+    <div class="event"><div class="time">09:00</div><div class="what">Bells Beach + Torquay surf coast</div></div>
+    <div class="event"><div class="time">10:30</div><div class="what">Memorial Arch photo stop</div></div>
+    <div class="event"><div class="time">11:15</div><div class="what">Kennett River koala spotting <span class="kid-tag">kids</span></div><div class="note">Wild koalas in eucalypts. Bring camera & patience.</div></div>
+    <div class="event"><div class="time">12:30</div><div class="what">Lunch at Apollo Bay (included or self-pay depending on tour)</div></div>
+    <div class="event"><div class="time">14:30</div><div class="what">Great Otway rainforest walk</div></div>
+    <div class="event"><div class="time">15:30</div><div class="what">12 Apostles <span class="kid-tag">kids</span></div><div class="note">60 min at main viewpoints — afternoon light is stunning.</div></div>
+    <div class="event"><div class="time">16:30</div><div class="what">Loch Ard Gorge</div></div>
+    <div class="event"><div class="time">18:30</div><div class="what">Dinner stop inland (usually Colac) — fish & chips or bakery</div></div>
+    <div class="event"><div class="time">20:00</div><div class="what">Back at Melbourne hotel</div></div>
+  </div>
+
+  <h3>🍽️ Late dinner back in Melbourne (if not eaten on tour)</h3>
+  <div class="cuisine-bar" data-day="d9-dinner">
+    <span class="label">Filter by cuisine:</span>
+    <button class="cuisine-pill on" data-cuisine="all">All</button>
+    <button class="cuisine-pill" data-cuisine="asian">Asian</button>
+    <button class="cuisine-pill" data-cuisine="western">Western</button>
+    <button class="cuisine-pill" data-cuisine="vietnamese">Vietnamese</button>
+  </div>
+  <div class="dining-grid" data-day-grid="d9-dinner">
+    <div class="dine" data-cuisine="vietnamese">
+      <span class="cuisine-tag">Vietnamese</span>
+      <h5>Pho Dzung</h5>
+      <p class="price">AUD 18-25 <small style="color:#94a3b8;">(VND 292K-405K)</small> pp · open late</p>
+      <p class="desc">Casual, open until 23:00. Warm phở bowls — exactly what you need after a long tour day.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=234%20Russell%20St%2C%20Melbourne%20CBD" target="_blank" style="color:#2563eb;font-weight:500;">234 Russell St, Melbourne CBD</a></p>
+    </div>
+    <div class="dine" data-cuisine="asian">
+      <span class="cuisine-tag">Hong Kong-style</span>
+      <h5>Shanghai Street Dumpling</h5>
+      <p class="price">AUD 20-30 <small style="color:#94a3b8;">(VND 324K-486K)</small> pp</p>
+      <p class="desc">Cheap, fast, quality dumplings. Multiple CBD locations open until late.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=342%20Little%20Bourke%20St" target="_blank" style="color:#2563eb;font-weight:500;">342 Little Bourke St</a></p>
+    </div>
+    <div class="dine" data-cuisine="western">
+      <span class="cuisine-tag">Italian · Pizza</span>
+      <h5>Lucy Liu Kitchen & Bar</h5>
+      <p class="price">AUD 40-60 <small style="color:#94a3b8;">(VND 648K-972K)</small> pp</p>
+      <p class="desc">Modern Asian-fusion with pizza & dumplings menu, lively atmosphere for late arrivals.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=23%20Oliver%20Ln%2C%20Melbourne" target="_blank" style="color:#2563eb;font-weight:500;">23 Oliver Ln, Melbourne</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== DAY 10 - Jul 16 ============================== -->
+<section class="section" id="d10">
+  <h2>Thu, 16 July · Phillip Island Penguins <span class="badge b-fun">Fun</span></h2>
+  <p class="lead">Afternoon departure tour to Phillip Island — wildlife park + koala conservation centre + the famous sunset Penguin Parade. Late return.</p>
+
+  <h3>Timeline</h3>
+  <div class="timeline">
+    <div class="event"><div class="time">09:00 – 11:30</div><div class="what">Slow morning in Melbourne — Melbourne Museum + Royal Exhibition Building <span class="kid-tag">kids</span></div><div class="note">Carlton Gardens. Sparse kid science & nat history galleries; lovely indoor space on a cold morning.</div></div>
+    <div class="event"><div class="time">12:00</div><div class="what">Lunch</div></div>
+    <div class="event"><div class="time">13:30</div><div class="what">Hotel pickup by Phillip Island tour (book <a href="https://www.phillipislandtours.com.au/" target="_blank">Phillip Island Tours</a>)</div></div>
+    <div class="event"><div class="time">15:30</div><div class="what">Churchill Island Heritage Farm — sheepdog demo, kids feed animals <span class="kid-tag">kids</span></div></div>
+    <div class="event"><div class="time">16:30</div><div class="what">Koala Conservation Centre — boardwalk through treetops</div></div>
+    <div class="event"><div class="time">17:45</div><div class="what">Arrive Penguin Parade viewing area — get seats early</div></div>
+    <div class="event"><div class="time">18:00 – 18:30</div><div class="what">Sunset</div></div>
+    <div class="event"><div class="time">18:30 – 19:30</div><div class="what">Penguin Parade <span class="kid-tag">magical</span></div><div class="note">Hundreds of little penguins waddle up the beach to burrows at nightfall. Bundle up — it's COLD on the beach in July (4–8°C with wind chill).</div></div>
+    <div class="event"><div class="time">19:45</div><div class="what">Bus departs to Melbourne</div></div>
+    <div class="event"><div class="time">22:30</div><div class="what">Back at hotel</div></div>
+  </div>
+
+  <h3>🍽️ Lunch — before tour pickup</h3>
+  <div class="cuisine-bar" data-day="d10-lunch">
+    <span class="label">Filter by cuisine:</span>
+    <button class="cuisine-pill on" data-cuisine="all">All</button>
+    <button class="cuisine-pill" data-cuisine="cafe">Café</button>
+    <button class="cuisine-pill" data-cuisine="asian">Asian</button>
+    <button class="cuisine-pill" data-cuisine="western">Western</button>
+  </div>
+  <div class="dining-grid" data-day-grid="d10-lunch">
+    <div class="dine" data-cuisine="cafe">
+      <span class="cuisine-tag">Café · Brunch</span>
+      <h5>Stovetop Coffee House</h5>
+      <p class="price">AUD 20-30 <small style="color:#94a3b8;">(VND 324K-486K)</small> pp</p>
+      <p class="desc">Creative brunch plates — ricotta hotcakes, big breakfast, killer coffee.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Level%201%2C%20120%20Little%20Lonsdale%20St" target="_blank" style="color:#2563eb;font-weight:500;">Level 1, 120 Little Lonsdale St</a></p>
+    </div>
+    <div class="dine" data-cuisine="asian">
+      <span class="cuisine-tag">Japanese</span>
+      <h5>Kenzan Collins</h5>
+      <p class="price">AUD 25-40 <small style="color:#94a3b8;">(VND 405K-648K)</small> pp</p>
+      <p class="desc">Quality sushi train — kids choose plates off the belt. Fast & fun.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=45%20Collins%20St" target="_blank" style="color:#2563eb;font-weight:500;">45 Collins St</a></p>
+    </div>
+    <div class="dine" data-cuisine="western">
+      <span class="cuisine-tag">Pizza</span>
+      <h5>Lazerpig</h5>
+      <p class="price">AUD 25-38 <small style="color:#94a3b8;">(VND 405K-616K)</small> pp</p>
+      <p class="desc">Wood-fired pizza, short menu, kid-friendly. 10-min walk from Melbourne Museum.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=336%20Smith%20St%2C%20Collingwood" target="_blank" style="color:#2563eb;font-weight:500;">336 Smith St, Collingwood</a></p>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <strong>🦋 Tour includes light dinner</strong> on most Phillip Island packages — typically fish & chips or pizza at visitor centre. No separate dinner needed.
+  </div>
+</section>
+
+<!-- ============================== DAY 11 - Jul 17 ============================== -->
+<section class="section" id="d11">
+  <h2>Fri, 17 July · Scienceworks + St Kilda <span class="badge b-fun">Fun</span></h2>
+  <p class="lead">Perfect FLL-themed follow-up: Scienceworks interactive museum all morning, afternoon at St Kilda beach + Luna Park.</p>
+
+  <h3>Timeline</h3>
+  <div class="timeline">
+    <div class="event"><div class="time">09:00</div><div class="what">Breakfast at hotel</div></div>
+    <div class="event"><div class="time">10:00 – 13:30</div><div class="what">Scienceworks Museum <span class="kid-tag">perfect for FLL kids</span></div><div class="note">Hands-on physics, robotics, lightning room show (live demo every hour), planetarium. AUD 15 <small style="color:#94a3b8;">(VND 243K)</small> adult, kids free. 20-min Uber.</div></div>
+    <div class="event"><div class="time">13:30</div><div class="what">Lunch at Scienceworks café or drive to St Kilda</div></div>
+    <div class="event"><div class="time">14:30 – 17:00</div><div class="what">St Kilda beach + Luna Park <span class="kid-tag">kids</span></div><div class="note">Historic Luna Park (AUD 55 <small style="color:#94a3b8;">(VND 891K)</small> unlimited rides) — kids will LOVE it. Beach walk afterward if dry. Ferris wheel, Scenic Railway roller coaster (opened 1912!).</div></div>
+    <div class="event"><div class="time">17:30 – 18:30</div><div class="what">Acland St — Melbourne's dessert street!</div><div class="note">Cake shops, gelato, warming drinks. Parenthesis: get the kids a hot chocolate from Chocolateria San Churro.</div></div>
+    <div class="event"><div class="time">19:00</div><div class="what">Dinner (see options)</div></div>
+  </div>
+
+  <h3>🍽️ Dinner — Fri 17 July</h3>
+  <div class="cuisine-bar" data-day="d11-dinner">
+    <span class="label">Filter by cuisine:</span>
+    <button class="cuisine-pill on" data-cuisine="all">All</button>
+    <button class="cuisine-pill" data-cuisine="seafood">Seafood</button>
+    <button class="cuisine-pill" data-cuisine="italian">Italian</button>
+    <button class="cuisine-pill" data-cuisine="asian">Asian</button>
+  </div>
+  <div class="dining-grid" data-day-grid="d11-dinner">
+    <div class="dine" data-cuisine="seafood">
+      <span class="cuisine-tag">Seafood</span>
+      <h5>Stokehouse St Kilda</h5>
+      <p class="price">AUD 70-100 <small style="color:#94a3b8;">(VND 1.1M-1.6M)</small> pp · book ahead</p>
+      <p class="desc">Right on the beach. Seafood platters, wood-fired fish, pasta. Kids menu AUD 24 <small style="color:#94a3b8;">(VND 389K)</small>.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=30%20Jacka%20Blvd%2C%20St%20Kilda" target="_blank" style="color:#2563eb;font-weight:500;">30 Jacka Blvd, St Kilda</a></p>
+    </div>
+    <div class="dine" data-cuisine="italian">
+      <span class="cuisine-tag">Italian · Pizza</span>
+      <h5>Cicciolina</h5>
+      <p class="price">AUD 40-60 <small style="color:#94a3b8;">(VND 648K-972K)</small> pp</p>
+      <p class="desc">Iconic St Kilda trattoria, no bookings. Arrive by 18:30. Pasta & pizza, warm & lively.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=130%20Acland%20St%2C%20St%20Kilda" target="_blank" style="color:#2563eb;font-weight:500;">130 Acland St, St Kilda</a></p>
+    </div>
+    <div class="dine" data-cuisine="asian">
+      <span class="cuisine-tag">Japanese · Ramen</span>
+      <h5>Ramen Ya</h5>
+      <p class="price">AUD 22-32 <small style="color:#94a3b8;">(VND 356K-518K)</small> pp</p>
+      <p class="desc">Steaming tonkotsu ramen — exactly right after a cold Melbourne beach day. Casual & fast.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=181%20Barkly%20St%2C%20St%20Kilda" target="_blank" style="color:#2563eb;font-weight:500;">181 Barkly St, St Kilda</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== DAY 12 - Jul 18 ============================== -->
+<section class="section" id="d12">
+  <h2>Sat, 18 July · Markets + Shopping Day <span class="badge b-fun">Fun</span></h2>
+  <p class="lead">Last full day. Relaxed pace — Queen Vic Night Market or Southbank, souvenir shopping, and a celebration farewell dinner.</p>
+
+  <h3>Timeline</h3>
+  <div class="timeline">
+    <div class="event"><div class="time">09:30</div><div class="what">Breakfast at hotel</div></div>
+    <div class="event"><div class="time">10:30 – 13:00</div><div class="what">Melbourne Central + Emporium + Bourke St Mall <span class="kid-tag">shopping</span></div><div class="note">Lego Store Melbourne Central, Uniqlo, Myer, David Jones. Pick up souvenirs — Aboriginal art shops on Swanston St.</div></div>
+    <div class="event"><div class="time">13:00</div><div class="what">Lunch</div></div>
+    <div class="event"><div class="time">14:30 – 17:00</div><div class="what">Brighton Beach Boxes + Royal Botanic Gardens <span class="kid-tag">kids</span></div><div class="note">Colorful boxes on the beach — famous photo spot. 25-min tram. Or do NGV (art gallery) if raining.</div></div>
+    <div class="event"><div class="time">18:00 – 19:00</div><div class="what">Pack, rest at hotel</div></div>
+    <div class="event"><div class="time">19:30</div><div class="what">Farewell dinner</div></div>
+  </div>
+
+  <h3>🍽️ Lunch — Sat 18 July</h3>
+  <div class="cuisine-bar" data-day="d12-lunch">
+    <span class="label">Filter by cuisine:</span>
+    <button class="cuisine-pill on" data-cuisine="all">All</button>
+    <button class="cuisine-pill" data-cuisine="asian">Asian</button>
+    <button class="cuisine-pill" data-cuisine="cafe">Café</button>
+    <button class="cuisine-pill" data-cuisine="western">Western</button>
+  </div>
+  <div class="dining-grid" data-day-grid="d12-lunch">
+    <div class="dine" data-cuisine="asian">
+      <span class="cuisine-tag">Malaysian</span>
+      <h5>PappaRich Melbourne Central</h5>
+      <p class="price">AUD 22-32 <small style="color:#94a3b8;">(VND 356K-518K)</small> pp</p>
+      <p class="desc">Nasi lemak, roti, chicken rice. Kids like the mild Malaysian flavors + iced drinks.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Melbourne%20Central%20L3" target="_blank" style="color:#2563eb;font-weight:500;">Melbourne Central L3</a></p>
+    </div>
+    <div class="dine" data-cuisine="cafe">
+      <span class="cuisine-tag">Café</span>
+      <h5>Axil Coffee Roasters</h5>
+      <p class="price">AUD 20-30 <small style="color:#94a3b8;">(VND 324K-486K)</small> pp</p>
+      <p class="desc">Melbourne specialty coffee institution. Brunch menu — smashed avo, pancakes, smoothie bowls.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=322%20Burwood%20Rd%2C%20Hawthorn%20or%2019%20Bourke%20St%2C%20CBD" target="_blank" style="color:#2563eb;font-weight:500;">322 Burwood Rd, Hawthorn or 19 Bourke St, CBD</a></p>
+    </div>
+    <div class="dine" data-cuisine="western">
+      <span class="cuisine-tag">Burgers</span>
+      <h5>Burger Project Melbourne Central</h5>
+      <p class="price">AUD 18-26 <small style="color:#94a3b8;">(VND 292K-421K)</small> pp</p>
+      <p class="desc">Neil Perry-designed burger joint in the mall. Kids combo AUD 14 <small style="color:#94a3b8;">(VND 227K)</small>. Easy in & out.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Melbourne%20Central%20L3" target="_blank" style="color:#2563eb;font-weight:500;">Melbourne Central L3</a></p>
+    </div>
+  </div>
+
+  <h3>🍽️ Farewell Dinner — Sat 18 July</h3>
+  <div class="cuisine-bar" data-day="d12-dinner">
+    <span class="label">Filter by cuisine:</span>
+    <button class="cuisine-pill on" data-cuisine="all">All</button>
+    <button class="cuisine-pill" data-cuisine="australian">Modern Australian</button>
+    <button class="cuisine-pill" data-cuisine="asian">Asian</button>
+    <button class="cuisine-pill" data-cuisine="seafood">Seafood</button>
+  </div>
+  <div class="dining-grid" data-day-grid="d12-dinner">
+    <div class="dine" data-cuisine="australian">
+      <span class="cuisine-tag">Modern Australian</span>
+      <h5>Vue de Monde <span class="kid-tag">fine dining</span></h5>
+      <p class="price">AUD 300-400 <small style="color:#94a3b8;">(VND 4.9M-6.5M)</small> pp · book 4+ weeks ahead</p>
+      <p class="desc">Iconic Melbourne fine dining on Level 55 of Rialto. 8-course tasting menu. Sunset city view. Reserve kids menu.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Level%2055%2C%20525%20Collins%20St" target="_blank" style="color:#2563eb;font-weight:500;">Level 55, 525 Collins St</a></p>
+    </div>
+    <div class="dine" data-cuisine="seafood">
+      <span class="cuisine-tag">Seafood</span>
+      <h5>The Atlantic Crown Casino</h5>
+      <p class="price">AUD 80-130 <small style="color:#94a3b8;">(VND 1.3M-2.1M)</small> pp</p>
+      <p class="desc">Yarra-side seafood institution — fresh oysters, whole fish, lobster. Kids menu at AUD 25 <small style="color:#94a3b8;">(VND 405K)</small>.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Crown%20Entertainment%20Complex%2C%20Southbank" target="_blank" style="color:#2563eb;font-weight:500;">Crown Entertainment Complex, Southbank</a></p>
+    </div>
+    <div class="dine" data-cuisine="asian">
+      <span class="cuisine-tag">Chinese · Peking Duck</span>
+      <h5>Flower Drum Melbourne</h5>
+      <p class="price">AUD 100-150 <small style="color:#94a3b8;">(VND 1.6M-2.4M)</small> pp</p>
+      <p class="desc">Legendary Cantonese — award-winning Peking duck, dumplings. Old-school elegance, families welcomed.</p>
+      <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=17%20Market%20Ln%2C%20Melbourne" target="_blank" style="color:#2563eb;font-weight:500;">17 Market Ln, Melbourne</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== DAY 13 - Jul 19 ============================== -->
+<section class="section" id="d13">
+  <h2>Sun, 19 July · Melbourne → Hanoi <span class="badge b-travel">Return</span></h2>
+  <p class="lead">Morning flight to Ho Chi Minh City, connection to Hanoi in the evening. Home by 10 PM Hanoi time.</p>
+
+  <h3>Timeline</h3>
+  <div class="timeline">
+    <div class="event"><div class="time">07:00</div><div class="what">Final hotel breakfast</div></div>
+    <div class="event"><div class="time">07:45</div><div class="what">Check out, Uber XL to MEL airport (30 min)</div></div>
+    <div class="event"><div class="time">08:30</div><div class="what">Check-in at VN counter T2, tax refund (TRS) if applicable</div><div class="note">TRS desk for claiming GST back on purchases over AUD 300 <small style="color:#94a3b8;">(VND 4.9M)</small> — bring receipts. Located after immigration.</div></div>
+    <div class="event"><div class="time">11:00</div><div class="what">VN780 MEL → SGN departs</div></div>
+    <div class="event"><div class="time">16:30</div><div class="what">Arrive SGN, transit (~2h 30m)</div><div class="note">Dinner at T2 food court — Phở 2000 is a solid option.</div></div>
+    <div class="event"><div class="time">19:00</div><div class="what">VN1180 SGN → HAN departs</div></div>
+    <div class="event"><div class="time">21:10</div><div class="what">Arrive Noi Bai T1, home by 22:30</div></div>
+  </div>
+
+  <div class="success-box">
+    <strong>🎒 GST refund reminder:</strong> TRS (Tourist Refund Scheme) at Melbourne Airport refunds the 10% GST on goods over AUD 300 <small style="color:#94a3b8;">(VND 4.9M)</small> purchased in the last 60 days. Have original receipts + items visible. Refund can be to credit card, ~6 weeks processing.
+  </div>
+</section>
+
+<!-- ============================== BUDGET ============================== -->
+<section class="section" id="budget">
+  <h2>💰 Indicative Budget (Family of 4)</h2>
+  <p class="lead">Mid-range scenario in AUD. Multiply by ~16,200 for VND. Adjust based on hotel tier and premium-economy upgrade.</p>
+
+  <table>
+    <thead><tr><th>Category</th><th>Mid-range (4★ + economy)</th><th>Premium (5★ + prem economy)</th></tr></thead>
+    <tbody>
+      <tr><td>✈️ International flights (VN) × 4</td><td class="num">AUD 6,300-7,600 <small style="color:#94a3b8;">(VND 102M-123M)</small></td><td class="num">AUD 13,200-16,200 <small style="color:#94a3b8;">(VND 214M-262M)</small></td></tr>
+      <tr><td>✈️ Sydney→Melbourne domestic × 4</td><td class="num">AUD 640-800 <small style="color:#94a3b8;">(VND 10M-13M)</small></td><td class="num">AUD 800-1,000 <small style="color:#94a3b8;">(VND 13M-16M)</small></td></tr>
+      <tr><td>🏨 Hotels (11 nights)</td><td class="num">AUD 3,320-4,320 <small style="color:#94a3b8;">(VND 54M-70M)</small></td><td class="num">AUD 5,000-6,500 <small style="color:#94a3b8;">(VND 81M-105M)</small></td></tr>
+      <tr><td>🍽️ Food (13 days, AUD 150-300 <small style="color:#94a3b8;">(VND 2.4M-4.9M)</small>/day family)</td><td class="num">AUD 1,950-2,600 <small style="color:#94a3b8;">(VND 32M-42M)</small></td><td class="num">AUD 3,500-4,500 <small style="color:#94a3b8;">(VND 57M-73M)</small></td></tr>
+      <tr><td>🚗 Local transport (Uber + trains + tours)</td><td class="num">AUD 700-1,000 <small style="color:#94a3b8;">(VND 11M-16M)</small></td><td class="num">AUD 1,000-1,400 <small style="color:#94a3b8;">(VND 16M-23M)</small></td></tr>
+      <tr><td>🎡 Attractions (Opera tour, Zoo, Eureka, Luna Park, Scienceworks, Phillip Island tour, Great Ocean Road tour)</td><td class="num">AUD 1,500-2,000 <small style="color:#94a3b8;">(VND 24M-32M)</small></td><td class="num">AUD 1,700-2,200 <small style="color:#94a3b8;">(VND 28M-36M)</small></td></tr>
+      <tr><td>🛂 Visa × 4 + biometrics + translations</td><td class="num">AUD 1,100-1,250 <small style="color:#94a3b8;">(VND 18M-20M)</small></td><td class="num">AUD 1,100-1,250 <small style="color:#94a3b8;">(VND 18M-20M)</small></td></tr>
+      <tr><td>🛡️ Travel insurance (family)</td><td class="num">AUD 250-400 <small style="color:#94a3b8;">(VND 4.0M-6.5M)</small></td><td class="num">AUD 400-600 <small style="color:#94a3b8;">(VND 6.5M-9.7M)</small></td></tr>
+      <tr><td>🎁 Shopping / souvenirs / extras</td><td class="num">AUD 600-1,000 <small style="color:#94a3b8;">(VND 9.7M-16M)</small></td><td class="num">AUD 1,500-3,000 <small style="color:#94a3b8;">(VND 24M-49M)</small></td></tr>
+      <tr><th>TOTAL</th><th class="num">AUD 16,360 – 20,970<br><small>VND 265 – 340 M</small></th><th class="num">AUD 28,200 – 36,650<br><small>VND 457 – 593 M</small></th></tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box">
+    <strong>💡 Cost savings:</strong>
+    <ul style="margin: 6px 0 0 0;">
+      <li>Book Vietnam Airlines in Dec 2025 / Jan 2026 (6 months out) for the best fares — save 20–30%</li>
+      <li>Stay at serviced apartment in Melbourne with kitchen (save AUD 40-60 <small style="color:#94a3b8;">(VND 648K-972K)</small>/day on dinners)</li>
+      <li>Opal Sunday fare cap (AUD 9.35/adult unlimited) — do the Opera House day on Sunday</li>
+      <li>Kids under 4 go free on most attractions — confirm entry rules at each</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================== PACKING ============================== -->
+<section class="section" id="packing">
+  <h2>🎒 Packing Checklist</h2>
+  <p class="lead">Sydney & Melbourne in July = Australian winter. Days 10–17°C, nights 4–9°C. Cold, crisp, occasional rain — layering is key.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h4>🧥 Clothing (per person)</h4>
+      <ul>
+        <li>Warm jacket (puffer or parka)</li>
+        <li>Fleece / hoodie × 2</li>
+        <li>Long pants × 3</li>
+        <li>Thermal base layer (1 set — esp for Phillip Island penguins)</li>
+        <li>Long-sleeve shirts × 4</li>
+        <li>T-shirts × 3</li>
+        <li>Underwear × 7</li>
+        <li>Socks × 7 (including wool pair)</li>
+        <li>Beanie / scarf / gloves — yes, even in Sydney evenings</li>
+        <li>Umbrella (compact)</li>
+        <li>Waterproof jacket or rain poncho</li>
+        <li>Sneakers + dress casual shoes</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4>👦 Kids extras</h4>
+      <ul>
+        <li>Son's FLL team uniform + spare</li>
+        <li>Daughter's warm dress for celebration dinner</li>
+        <li>Kid-size noise-canceling headphones (flight)</li>
+        <li>Small backpack for each kid</li>
+        <li>Favorite snacks (rice crackers, nori, seaweed)</li>
+        <li>Motion sickness tablets (Phillip Island bus can be winding)</li>
+        <li>Water bottles (refillable — Sydney tap water is excellent)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4>📄 Documents (in carry-on)</h4>
+      <ul>
+        <li>4 × passports (6+ months validity)</li>
+        <li>Printed visa grant letters (1 per person)</li>
+        <li>Printed flight itinerary + hotel vouchers</li>
+        <li>Travel insurance policy + emergency numbers</li>
+        <li>FLL registration confirmation</li>
+        <li>Copy of birth certificates (for kids, backup)</li>
+        <li>Driver's license (if renting car)</li>
+        <li>Cash: AUD 500 <small style="color:#94a3b8;">(VND 8.1M)</small> mixed denominations</li>
+        <li>Credit cards with foreign-use enabled</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4>🔌 Electronics</h4>
+      <ul>
+        <li>Type I power adapters × 2 (Australian 3-pin flat)</li>
+        <li>Universal travel adapter for charging multiple devices</li>
+        <li>Phone chargers × 4</li>
+        <li>Tablets with downloaded media for flight</li>
+        <li>Camera + memory cards + charger</li>
+        <li>Power bank for day tours (10,000mAh min)</li>
+        <li>eSIM: Airalo / Nomad Australia 5GB pack (~USD 15) — activate on landing</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4>💊 Medical kit</h4>
+      <ul>
+        <li>Paracetamol + ibuprofen (adult & kids)</li>
+        <li>Cold/flu tablets, throat lozenges</li>
+        <li>Motion sickness (Phillip Island, Great Ocean Road)</li>
+        <li>Antihistamines (Cetirizine)</li>
+        <li>Band-aids, Dettol, antiseptic cream</li>
+        <li>Diarrhea tablets (Imodium)</li>
+        <li>Hand sanitizer + wet wipes</li>
+        <li>Chapstick, moisturizer (dry AU winter air)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4>🤖 FLL-specific</h4>
+      <ul>
+        <li>Son's Lego robot — carry on, NOT checked (never check fragile)</li>
+        <li>Laptop with programming software + backup charger</li>
+        <li>USB drive with code backup</li>
+        <li>Team project presentation board (flatpack if possible)</li>
+        <li>Spare Lego parts pack</li>
+        <li>Team uniform + backup</li>
+        <li>Notebook + pens for notes between matches</li>
+        <li>Snacks for long venue day (no leaving for lunch most days)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <strong>⚠️ Australian biosecurity:</strong> Declare ALL food, plant products, herbs, medicines on arrival. Don't pack: fresh fruit, raw meat, seeds, or traditional medicines without prescription. Vietnamese instant noodles are generally OK but declare. Don't risk AUD 2,664 <small style="color:#94a3b8;">(VND 43M)</small> fines.
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Generated for Thai & family · Australia trip 7–19 July 2026 · Prices indicative in AUD as of April 2026 · VND conversion at 16,200 ≈ 1 AUD<br>
+  Book flights & hotels early, apply for visa by late April, and enjoy the FLL tournament!
+</footer>
+
+<script>
+  // ======== TAB NAVIGATION ========
+  const tabs = document.querySelectorAll('nav.tabs button');
+  const sections = document.querySelectorAll('main .section');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-tab');
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      sections.forEach(s => s.classList.toggle('active', s.id === target));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // ======== EDIT MODE (per subsection H3) ========
+  function setupEditButtons() {
+    document.querySelectorAll('main section.section').forEach(tab => {
+      const tabId = tab.id;
+      let idx = 0;
+      tab.querySelectorAll('h3').forEach(h3 => {
+        const blockId = tabId + '-h3-' + idx;
+        idx++;
+
+        // Collect siblings after this h3 (within its parent) until next h3
+        const contentEls = [];
+        let n = h3.nextElementSibling;
+        while (n && n.tagName !== 'H3') {
+          contentEls.push(n);
+          n = n.nextElementSibling;
+        }
+        if (contentEls.length === 0) return;
+
+        // Wrap them in an editable container
+        const wrap = document.createElement('div');
+        wrap.className = 'editable-content';
+        wrap.dataset.blockId = blockId;
+        contentEls[0].before(wrap);
+        contentEls.forEach(el => wrap.appendChild(el));
+
+        // Add inline edit button on the h3
+        const btn = document.createElement('button');
+        btn.className = 'edit-btn';
+        btn.type = 'button';
+        btn.innerHTML = '✏️ Edit';
+        btn.title = 'Edit this section — saves to your browser';
+        h3.appendChild(btn);
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleEdit(wrap, btn);
+        });
+
+        // Restore saved version if present
+        const saved = localStorage.getItem('itin:' + blockId);
+        if (saved) { wrap.innerHTML = saved; }
+      });
+    });
+  }
+
+  function toggleEdit(wrap, btn) {
+    if (wrap.classList.contains('editing')) {
+      wrap.contentEditable = 'false';
+      wrap.classList.remove('editing');
+      btn.innerHTML = '✏️ Edit';
+      btn.classList.remove('active');
+      try {
+        localStorage.setItem('itin:' + wrap.dataset.blockId, wrap.innerHTML);
+        showToast('Saved to your browser ✓');
+      } catch(err) {
+        showToast('Could not save (storage full)');
+      }
+      bindCuisineFilters();
+    } else {
+      wrap.contentEditable = 'true';
+      wrap.classList.add('editing');
+      btn.innerHTML = '💾 Save';
+      btn.classList.add('active');
+    }
+  }
+
+  // ======== CUISINE FILTERS (idempotent) ========
+  function bindCuisineFilters() {
+    document.querySelectorAll('.cuisine-bar').forEach(bar => {
+      const dayKey = bar.getAttribute('data-day');
+      const grid = document.querySelector('.dining-grid[data-day-grid="' + dayKey + '"]');
+      if (!grid) return;
+      bar.querySelectorAll('.cuisine-pill').forEach(pill => {
+        if (pill.dataset.bound === '1') return;
+        pill.dataset.bound = '1';
+        pill.addEventListener('click', () => {
+          bar.querySelectorAll('.cuisine-pill').forEach(p => p.classList.remove('on'));
+          pill.classList.add('on');
+          const c = pill.getAttribute('data-cuisine');
+          grid.querySelectorAll('.dine').forEach(d => {
+            const dc = d.getAttribute('data-cuisine');
+            if (c === 'all') { d.classList.remove('hidden'); }
+            else { d.classList.toggle('hidden', dc !== c); }
+          });
+        });
+      });
+    });
+  }
+
+  // ======== TOAST / RESET / DOWNLOAD ========
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window.__toastTimer);
+    window.__toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+  }
+
+  function resetAllEdits() {
+    if (!confirm('Reset all your edits and restore the original itinerary?')) return;
+    Object.keys(localStorage).filter(k => k.startsWith('itin:')).forEach(k => localStorage.removeItem(k));
+    location.reload();
+  }
+
+  function downloadCustomized() {
+    const clone = document.documentElement.cloneNode(true);
+    // Strip edit UI
+    clone.querySelectorAll('.edit-btn, .customize-bar, .toast').forEach(el => el.remove());
+    // Unwrap editable-content divs
+    clone.querySelectorAll('.editable-content').forEach(el => {
+      while (el.firstChild) el.parentNode.insertBefore(el.firstChild, el);
+      el.remove();
+    });
+    clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+    const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'my-australia-itinerary.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('Downloaded ✓');
+  }
+
+  // Expose for inline onclick
+  window.resetAllEdits = resetAllEdits;
+  window.downloadCustomized = downloadCustomized;
+
+  // ======== INIT ========
+  setupEditButtons();
+  bindCuisineFilters();
+</script>
+
+</body>
+</html>
