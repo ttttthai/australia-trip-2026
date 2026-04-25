@@ -388,86 +388,95 @@
     .info-row { grid-template-columns: 1fr; gap: 2px; }
   }
 
-  /* ============ CUSTOMIZE / EDIT MODE ============ */
-  .customize-bar {
-    background: var(--panel2);
-    border-bottom: 1px solid var(--border);
-    padding: 10px 20px;
+  /* Top 10 viral section */
+  .viral-section {
+    background: linear-gradient(135deg, rgba(244,114,182,0.08), rgba(251,191,36,0.08));
+    border: 1px solid rgba(244,114,182,0.3);
+    border-radius: 12px;
+    margin: 18px 0 26px;
+    padding: 14px 18px;
+  }
+  .viral-section summary {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--accent2);
+    cursor: pointer;
+    list-style: none;
+    padding: 4px 0;
+  }
+  .viral-section summary::-webkit-details-marker { display: none; }
+  .viral-section summary::before {
+    content: "▸";
+    display: inline-block;
+    margin-right: 8px;
+    transition: transform 0.2s;
+  }
+  .viral-section[open] summary::before { transform: rotate(90deg); }
+  .viral-section summary small {
+    color: var(--muted);
+    font-weight: 400;
+    margin-left: 6px;
+  }
+  .viral-note {
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin: 8px 0 14px;
+    font-style: italic;
+  }
+  .viral-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 10px;
+  }
+  .viral-card {
     display: flex;
     gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
-    font-size: 0.85rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: transform 0.15s, border-color 0.15s;
   }
-  .customize-bar > .cb-title { font-weight: 600; color: var(--gold); }
-  .customize-bar .cb-info {
+  .viral-card:hover { transform: translateY(-2px); border-color: var(--accent2); }
+  .viral-rank {
+    flex: 0 0 auto;
+    background: linear-gradient(135deg, #f472b6, #fbbf24);
+    color: #0f172a;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    height: fit-content;
+    min-width: 32px;
+    text-align: center;
+  }
+  .viral-body { flex: 1; min-width: 0; }
+  .viral-name {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.92rem;
+    margin-bottom: 2px;
+  }
+  .viral-area {
+    color: var(--gold);
+    font-size: 0.74rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .viral-why {
     color: var(--muted);
     font-size: 0.78rem;
-    flex: 1;
-    min-width: 220px;
+    line-height: 1.4;
+    margin-bottom: 6px;
   }
-  .customize-bar button {
-    background: var(--panel);
-    color: var(--text);
-    border: 1px solid var(--border);
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    font-weight: 500;
-    transition: all 0.15s;
-  }
-  .customize-bar button:hover { background: var(--accent); color: #0f172a; border-color: var(--accent); }
-  .customize-bar button.danger:hover { background: var(--red); color: white; border-color: var(--red); }
-
-  .edit-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: rgba(255,255,255,0.08);
-    color: var(--muted);
-    border: 1px solid var(--border);
-    padding: 3px 10px;
-    margin-left: 10px;
-    border-radius: 6px;
+  .viral-map {
+    display: inline-block;
+    color: var(--accent);
     font-size: 0.72rem;
+    text-decoration: none;
     font-weight: 500;
-    cursor: pointer;
-    vertical-align: middle;
-    transition: all 0.15s;
-    font-family: inherit;
   }
-  .edit-btn:hover { background: var(--accent); color: #0f172a; border-color: var(--accent); }
-  .edit-btn.active { background: var(--green); color: #0f172a; border-color: var(--green); }
-
-  .editable-content.editing {
-    outline: 2px dashed var(--accent);
-    outline-offset: 8px;
-    background: rgba(56,189,248,0.05);
-    border-radius: 10px;
-    padding: 10px;
-    transition: all 0.2s;
-  }
-  .editable-content.editing:focus-within { outline-style: solid; }
-
-  .toast {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: var(--green);
-    color: #0f172a;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-weight: 600;
-    z-index: 1000;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s;
-    pointer-events: none;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    font-size: 0.9rem;
-  }
-  .toast.show { opacity: 1; transform: translateY(0); }
+  .viral-map:hover { color: var(--gold); text-decoration: underline; }
 
 </style>
 </head>
@@ -484,13 +493,6 @@
     <span class="pill">🏠 From Hanoi</span>
   </div>
 </header>
-<div class="customize-bar" id="customize-bar">
-  <span class="cb-title">✨ Customize</span>
-  <span class="cb-info">Click <strong>✏️ Edit</strong> next to any section heading to modify that block. Changes are saved in your browser.</span>
-  <button onclick="downloadCustomized()">📥 Download my version</button>
-  <button onclick="resetAllEdits()" class="danger">↺ Reset all edits</button>
-</div>
-<div class="toast" id="toast">Saved ✓</div>
 
 
 <nav class="tabs" id="tabs">
@@ -998,8 +1000,103 @@
       <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=World%20Square%2C%20644%20George%20St%2C%20Sydney%20CBD" target="_blank" style="color:#2563eb;font-weight:500;">World Square, 644 George St, Sydney CBD</a></p>
     </div>
   </div>
-
-  <h3>🍽️ Dinner — Darling Harbour</h3>
+  <details class="viral-section">
+    <summary>🔥 Top 10 from TikTok &amp; Instagram <small>· Sydney Harbour & CBD</small></summary>
+    <p class="viral-note">Curated viral hits & cult favorites locals queue for. Many require booking ahead — check the venue's Instagram for current waitlist tips.</p>
+    <div class="viral-grid">
+      <div class="viral-card">
+        <div class="viral-rank">#1</div>
+        <div class="viral-body">
+          <div class="viral-name">Lune Croissanterie</div>
+          <div class="viral-area">QVB pop-up + Fitzroy</div>
+          <div class="viral-why">World-famous flaky croissants — TikTok devotees queue from 6 AM. Two-bite cruffins disappear in 20 min.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lune%20Croissanterie%20QVB%20Sydney" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#2</div>
+        <div class="viral-body">
+          <div class="viral-name">Black Star Pastry Newtown</div>
+          <div class="viral-area">Newtown</div>
+          <div class="viral-why">Strawberry watermelon cake = the most Instagrammed cake on Earth. Get a slice + flat white.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Black%20Star%20Pastry%20277%20Australia%20St%20Newtown%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#3</div>
+        <div class="viral-body">
+          <div class="viral-name">Bourke Street Bakery Surry Hills</div>
+          <div class="viral-area">Surry Hills</div>
+          <div class="viral-why">Ginger brûlée tart, sausage rolls. The OG Sydney bakery, now 13 locations.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Bourke%20Street%20Bakery%20633%20Bourke%20St%20Surry%20Hills" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#4</div>
+        <div class="viral-body">
+          <div class="viral-name">The Grounds of Alexandria</div>
+          <div class="viral-area">Alexandria</div>
+          <div class="viral-why">Garden cafe with farm animals + flower walls. >100k Instagram posts. Reserve weekend brunch 2 weeks ahead.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=The%20Grounds%20of%20Alexandria%207A%202%20Huntley%20St%20Alexandria%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#5</div>
+        <div class="viral-body">
+          <div class="viral-name">Bills Surry Hills</div>
+          <div class="viral-area">Surry Hills</div>
+          <div class="viral-why">Ricotta hotcakes (1996 invention) — Bill Granger's original location. Kid-friendly.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Bills%20359%20Crown%20St%20Surry%20Hills" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#6</div>
+        <div class="viral-body">
+          <div class="viral-name">Mr Wong</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Glam Cantonese basement, dim sum trolleys, Insta-famous interior. Book 4 weeks out for dinner.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Mr%20Wong%203%20Bridge%20Ln%20Sydney%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#7</div>
+        <div class="viral-body">
+          <div class="viral-name">Hubert</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Underground French wine cellar — candlelit, theatrical. Most-saved 'date night' spot in Sydney on TikTok.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Restaurant%20Hubert%2015%20Bligh%20St%20Sydney%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#8</div>
+        <div class="viral-body">
+          <div class="viral-name">Single O Coffee Reservoir</div>
+          <div class="viral-area">Surry Hills</div>
+          <div class="viral-why">Specialty coffee mecca — TikTok latte art reels filmed here weekly.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Single%20O%2060-64%20Reservoir%20St%20Surry%20Hills%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#9</div>
+        <div class="viral-body">
+          <div class="viral-name">Fratelli Paradiso</div>
+          <div class="viral-area">Potts Point</div>
+          <div class="viral-why">All-day Italian, no bookings, queue out the door. Insta-staple cacio e pepe.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Fratelli%20Paradiso%2012-16%20Challis%20Ave%20Potts%20Point%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#10</div>
+        <div class="viral-body">
+          <div class="viral-name">Quay Restaurant</div>
+          <div class="viral-area">The Rocks</div>
+          <div class="viral-why">Snow egg dessert — Masterchef famous. Three-hat fine dining with Opera House view.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Quay%20Restaurant%20Upper%20Level%20Overseas%20Passenger%20Terminal%20The%20Rocks" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+    </div>
+  </details>
+<h3>🍽️ Dinner — Darling Harbour</h3>
   <div class="cuisine-bar" data-day="d2-dinner">
     <span class="label">Filter by cuisine:</span>
     <button class="cuisine-pill on" data-cuisine="all">All</button>
@@ -1030,6 +1127,102 @@
       <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=39%20Lime%20St%2C%20King%20Street%20Wharf%2C%20Darling%20Harbour" target="_blank" style="color:#2563eb;font-weight:500;">39 Lime St, King Street Wharf, Darling Harbour</a></p>
     </div>
   </div>
+  <details class="viral-section">
+    <summary>🔥 Top 10 from TikTok &amp; Instagram <small>· Sydney Harbour & CBD</small></summary>
+    <p class="viral-note">Curated viral hits & cult favorites locals queue for. Many require booking ahead — check the venue's Instagram for current waitlist tips.</p>
+    <div class="viral-grid">
+      <div class="viral-card">
+        <div class="viral-rank">#1</div>
+        <div class="viral-body">
+          <div class="viral-name">Lune Croissanterie</div>
+          <div class="viral-area">QVB pop-up + Fitzroy</div>
+          <div class="viral-why">World-famous flaky croissants — TikTok devotees queue from 6 AM. Two-bite cruffins disappear in 20 min.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lune%20Croissanterie%20QVB%20Sydney" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#2</div>
+        <div class="viral-body">
+          <div class="viral-name">Black Star Pastry Newtown</div>
+          <div class="viral-area">Newtown</div>
+          <div class="viral-why">Strawberry watermelon cake = the most Instagrammed cake on Earth. Get a slice + flat white.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Black%20Star%20Pastry%20277%20Australia%20St%20Newtown%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#3</div>
+        <div class="viral-body">
+          <div class="viral-name">Bourke Street Bakery Surry Hills</div>
+          <div class="viral-area">Surry Hills</div>
+          <div class="viral-why">Ginger brûlée tart, sausage rolls. The OG Sydney bakery, now 13 locations.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Bourke%20Street%20Bakery%20633%20Bourke%20St%20Surry%20Hills" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#4</div>
+        <div class="viral-body">
+          <div class="viral-name">The Grounds of Alexandria</div>
+          <div class="viral-area">Alexandria</div>
+          <div class="viral-why">Garden cafe with farm animals + flower walls. >100k Instagram posts. Reserve weekend brunch 2 weeks ahead.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=The%20Grounds%20of%20Alexandria%207A%202%20Huntley%20St%20Alexandria%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#5</div>
+        <div class="viral-body">
+          <div class="viral-name">Bills Surry Hills</div>
+          <div class="viral-area">Surry Hills</div>
+          <div class="viral-why">Ricotta hotcakes (1996 invention) — Bill Granger's original location. Kid-friendly.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Bills%20359%20Crown%20St%20Surry%20Hills" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#6</div>
+        <div class="viral-body">
+          <div class="viral-name">Mr Wong</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Glam Cantonese basement, dim sum trolleys, Insta-famous interior. Book 4 weeks out for dinner.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Mr%20Wong%203%20Bridge%20Ln%20Sydney%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#7</div>
+        <div class="viral-body">
+          <div class="viral-name">Hubert</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Underground French wine cellar — candlelit, theatrical. Most-saved 'date night' spot in Sydney on TikTok.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Restaurant%20Hubert%2015%20Bligh%20St%20Sydney%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#8</div>
+        <div class="viral-body">
+          <div class="viral-name">Single O Coffee Reservoir</div>
+          <div class="viral-area">Surry Hills</div>
+          <div class="viral-why">Specialty coffee mecca — TikTok latte art reels filmed here weekly.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Single%20O%2060-64%20Reservoir%20St%20Surry%20Hills%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#9</div>
+        <div class="viral-body">
+          <div class="viral-name">Fratelli Paradiso</div>
+          <div class="viral-area">Potts Point</div>
+          <div class="viral-why">All-day Italian, no bookings, queue out the door. Insta-staple cacio e pepe.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Fratelli%20Paradiso%2012-16%20Challis%20Ave%20Potts%20Point%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#10</div>
+        <div class="viral-body">
+          <div class="viral-name">Quay Restaurant</div>
+          <div class="viral-area">The Rocks</div>
+          <div class="viral-why">Snow egg dessert — Masterchef famous. Three-hat fine dining with Opera House view.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Quay%20Restaurant%20Upper%20Level%20Overseas%20Passenger%20Terminal%20The%20Rocks" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+    </div>
+  </details>
 </section>
 
 <!-- ============================== DAY 3 - Jul 9 ============================== -->
@@ -1079,6 +1272,102 @@
       <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Macquarie%20Centre%20L3%2C%20Herring%20Rd" target="_blank" style="color:#2563eb;font-weight:500;">Macquarie Centre L3, Herring Rd</a></p>
     </div>
   </div>
+  <details class="viral-section">
+    <summary>🔥 Top 10 from TikTok &amp; Instagram <small>· Sydney North Ryde / Chatswood / Eastwood</small></summary>
+    <p class="viral-note">Curated viral hits & cult favorites locals queue for. Many require booking ahead — check the venue's Instagram for current waitlist tips.</p>
+    <div class="viral-grid">
+      <div class="viral-card">
+        <div class="viral-rank">#1</div>
+        <div class="viral-body">
+          <div class="viral-name">Devon Cafe Eastwood</div>
+          <div class="viral-area">Eastwood</div>
+          <div class="viral-why">Korean-Aussie fusion brunch — 'Mr & Mrs Smith' breakfast is a TikTok cult classic.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Devon%20Cafe%2076%20Devonshire%20St%20Eastwood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#2</div>
+        <div class="viral-body">
+          <div class="viral-name">Mamak Chatswood</div>
+          <div class="viral-area">Chatswood</div>
+          <div class="viral-why">Theatrical roti-flipping at the entrance. TikTok ASMR favorite. Roti tisu is the move.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Mamak%20Chatswood%20409%20Victoria%20Ave%20Chatswood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#3</div>
+        <div class="viral-body">
+          <div class="viral-name">Wagaya Chatswood</div>
+          <div class="viral-area">Chatswood</div>
+          <div class="viral-why">Tablet-ordering Japanese izakaya. Kids love the gadgets, viral on TikTok for table-side photo booth.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Wagaya%20Chatswood%203%20Help%20St%20Chatswood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#4</div>
+        <div class="viral-body">
+          <div class="viral-name">Cardamom Pod Lane Cove</div>
+          <div class="viral-area">Lane Cove</div>
+          <div class="viral-why">Modern Indian, butter chicken pizza is TikTok-famous. Cozy + family-friendly.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cardamom%20Pod%20122%20Longueville%20Rd%20Lane%20Cove%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#5</div>
+        <div class="viral-body">
+          <div class="viral-name">Eastwood Korean BBQ Strip</div>
+          <div class="viral-area">Eastwood</div>
+          <div class="viral-why">5+ KBBQ joints on one block — Madang, Hanok, Dong Il Jang. Locals call it 'Little Korea'.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Eastwood%20Rowe%20St%20Eastwood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#6</div>
+        <div class="viral-body">
+          <div class="viral-name">Spice Alley Chippendale</div>
+          <div class="viral-area">Chippendale</div>
+          <div class="viral-why">Hawker-style food court, lantern-lit alley. Insta-perfect at dusk. 30 min from North Ryde.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Spice%20Alley%2018-20%20Kensington%20St%20Chippendale%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#7</div>
+        <div class="viral-body">
+          <div class="viral-name">Ho Jiak Town Hall</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Malaysian street food blowing up on TikTok. Char kway teow, nasi lemak. 25 min from Macquarie.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Ho%20Jiak%20Town%20Hall%20Sydney%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#8</div>
+        <div class="viral-body">
+          <div class="viral-name">Anchor Bar Macquarie</div>
+          <div class="viral-area">Macquarie Park</div>
+          <div class="viral-why">Buffalo wings + craft beer. Easy 5-min walk from Oaks. Family-friendly.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Anchor%20Bar%20Macquarie%20Centre%20Herring%20Rd%20Macquarie%20Park" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#9</div>
+        <div class="viral-body">
+          <div class="viral-name">Chefs Gallery Chatswood</div>
+          <div class="viral-area">Chatswood</div>
+          <div class="viral-why">Hand-pulled noodles in front of you. TikTok ASMR favorite. Always packed.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Chefs%20Gallery%20Chatswood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#10</div>
+        <div class="viral-body">
+          <div class="viral-name">Ulm-Ulm Eastwood</div>
+          <div class="viral-area">Eastwood</div>
+          <div class="viral-why">Korean fried chicken — viral on TikTok for the 'mountain' size portion. Order half-half flavors.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Ulm-Ulm%20Korean%20Eastwood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+    </div>
+  </details>
 </section>
 
 <!-- ============================== DAY 4 - Jul 10 ============================== -->
@@ -1129,6 +1418,102 @@
       <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Near%20Macquarie%20Park%20Metro%20station" target="_blank" style="color:#2563eb;font-weight:500;">Near Macquarie Park Metro station</a></p>
     </div>
   </div>
+  <details class="viral-section">
+    <summary>🔥 Top 10 from TikTok &amp; Instagram <small>· Sydney North Ryde / Chatswood / Eastwood</small></summary>
+    <p class="viral-note">Curated viral hits & cult favorites locals queue for. Many require booking ahead — check the venue's Instagram for current waitlist tips.</p>
+    <div class="viral-grid">
+      <div class="viral-card">
+        <div class="viral-rank">#1</div>
+        <div class="viral-body">
+          <div class="viral-name">Devon Cafe Eastwood</div>
+          <div class="viral-area">Eastwood</div>
+          <div class="viral-why">Korean-Aussie fusion brunch — 'Mr & Mrs Smith' breakfast is a TikTok cult classic.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Devon%20Cafe%2076%20Devonshire%20St%20Eastwood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#2</div>
+        <div class="viral-body">
+          <div class="viral-name">Mamak Chatswood</div>
+          <div class="viral-area">Chatswood</div>
+          <div class="viral-why">Theatrical roti-flipping at the entrance. TikTok ASMR favorite. Roti tisu is the move.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Mamak%20Chatswood%20409%20Victoria%20Ave%20Chatswood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#3</div>
+        <div class="viral-body">
+          <div class="viral-name">Wagaya Chatswood</div>
+          <div class="viral-area">Chatswood</div>
+          <div class="viral-why">Tablet-ordering Japanese izakaya. Kids love the gadgets, viral on TikTok for table-side photo booth.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Wagaya%20Chatswood%203%20Help%20St%20Chatswood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#4</div>
+        <div class="viral-body">
+          <div class="viral-name">Cardamom Pod Lane Cove</div>
+          <div class="viral-area">Lane Cove</div>
+          <div class="viral-why">Modern Indian, butter chicken pizza is TikTok-famous. Cozy + family-friendly.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cardamom%20Pod%20122%20Longueville%20Rd%20Lane%20Cove%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#5</div>
+        <div class="viral-body">
+          <div class="viral-name">Eastwood Korean BBQ Strip</div>
+          <div class="viral-area">Eastwood</div>
+          <div class="viral-why">5+ KBBQ joints on one block — Madang, Hanok, Dong Il Jang. Locals call it 'Little Korea'.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Eastwood%20Rowe%20St%20Eastwood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#6</div>
+        <div class="viral-body">
+          <div class="viral-name">Spice Alley Chippendale</div>
+          <div class="viral-area">Chippendale</div>
+          <div class="viral-why">Hawker-style food court, lantern-lit alley. Insta-perfect at dusk. 30 min from North Ryde.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Spice%20Alley%2018-20%20Kensington%20St%20Chippendale%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#7</div>
+        <div class="viral-body">
+          <div class="viral-name">Ho Jiak Town Hall</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Malaysian street food blowing up on TikTok. Char kway teow, nasi lemak. 25 min from Macquarie.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Ho%20Jiak%20Town%20Hall%20Sydney%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#8</div>
+        <div class="viral-body">
+          <div class="viral-name">Anchor Bar Macquarie</div>
+          <div class="viral-area">Macquarie Park</div>
+          <div class="viral-why">Buffalo wings + craft beer. Easy 5-min walk from Oaks. Family-friendly.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Anchor%20Bar%20Macquarie%20Centre%20Herring%20Rd%20Macquarie%20Park" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#9</div>
+        <div class="viral-body">
+          <div class="viral-name">Chefs Gallery Chatswood</div>
+          <div class="viral-area">Chatswood</div>
+          <div class="viral-why">Hand-pulled noodles in front of you. TikTok ASMR favorite. Always packed.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Chefs%20Gallery%20Chatswood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#10</div>
+        <div class="viral-body">
+          <div class="viral-name">Ulm-Ulm Eastwood</div>
+          <div class="viral-area">Eastwood</div>
+          <div class="viral-why">Korean fried chicken — viral on TikTok for the 'mountain' size portion. Order half-half flavors.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Ulm-Ulm%20Korean%20Eastwood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+    </div>
+  </details>
 </section>
 
 <!-- ============================== DAY 5 - Jul 11 ============================== -->
@@ -1175,6 +1560,102 @@
       <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Corner%20Epping%20Rd%20%26%20Herring%20Rd%2C%20Eastwood" target="_blank" style="color:#2563eb;font-weight:500;">Corner Epping Rd & Herring Rd, Eastwood</a></p>
     </div>
   </div>
+  <details class="viral-section">
+    <summary>🔥 Top 10 from TikTok &amp; Instagram <small>· Sydney North Ryde / Chatswood / Eastwood</small></summary>
+    <p class="viral-note">Curated viral hits & cult favorites locals queue for. Many require booking ahead — check the venue's Instagram for current waitlist tips.</p>
+    <div class="viral-grid">
+      <div class="viral-card">
+        <div class="viral-rank">#1</div>
+        <div class="viral-body">
+          <div class="viral-name">Devon Cafe Eastwood</div>
+          <div class="viral-area">Eastwood</div>
+          <div class="viral-why">Korean-Aussie fusion brunch — 'Mr & Mrs Smith' breakfast is a TikTok cult classic.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Devon%20Cafe%2076%20Devonshire%20St%20Eastwood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#2</div>
+        <div class="viral-body">
+          <div class="viral-name">Mamak Chatswood</div>
+          <div class="viral-area">Chatswood</div>
+          <div class="viral-why">Theatrical roti-flipping at the entrance. TikTok ASMR favorite. Roti tisu is the move.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Mamak%20Chatswood%20409%20Victoria%20Ave%20Chatswood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#3</div>
+        <div class="viral-body">
+          <div class="viral-name">Wagaya Chatswood</div>
+          <div class="viral-area">Chatswood</div>
+          <div class="viral-why">Tablet-ordering Japanese izakaya. Kids love the gadgets, viral on TikTok for table-side photo booth.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Wagaya%20Chatswood%203%20Help%20St%20Chatswood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#4</div>
+        <div class="viral-body">
+          <div class="viral-name">Cardamom Pod Lane Cove</div>
+          <div class="viral-area">Lane Cove</div>
+          <div class="viral-why">Modern Indian, butter chicken pizza is TikTok-famous. Cozy + family-friendly.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cardamom%20Pod%20122%20Longueville%20Rd%20Lane%20Cove%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#5</div>
+        <div class="viral-body">
+          <div class="viral-name">Eastwood Korean BBQ Strip</div>
+          <div class="viral-area">Eastwood</div>
+          <div class="viral-why">5+ KBBQ joints on one block — Madang, Hanok, Dong Il Jang. Locals call it 'Little Korea'.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Eastwood%20Rowe%20St%20Eastwood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#6</div>
+        <div class="viral-body">
+          <div class="viral-name">Spice Alley Chippendale</div>
+          <div class="viral-area">Chippendale</div>
+          <div class="viral-why">Hawker-style food court, lantern-lit alley. Insta-perfect at dusk. 30 min from North Ryde.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Spice%20Alley%2018-20%20Kensington%20St%20Chippendale%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#7</div>
+        <div class="viral-body">
+          <div class="viral-name">Ho Jiak Town Hall</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Malaysian street food blowing up on TikTok. Char kway teow, nasi lemak. 25 min from Macquarie.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Ho%20Jiak%20Town%20Hall%20Sydney%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#8</div>
+        <div class="viral-body">
+          <div class="viral-name">Anchor Bar Macquarie</div>
+          <div class="viral-area">Macquarie Park</div>
+          <div class="viral-why">Buffalo wings + craft beer. Easy 5-min walk from Oaks. Family-friendly.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Anchor%20Bar%20Macquarie%20Centre%20Herring%20Rd%20Macquarie%20Park" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#9</div>
+        <div class="viral-body">
+          <div class="viral-name">Chefs Gallery Chatswood</div>
+          <div class="viral-area">Chatswood</div>
+          <div class="viral-why">Hand-pulled noodles in front of you. TikTok ASMR favorite. Always packed.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Chefs%20Gallery%20Chatswood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#10</div>
+        <div class="viral-body">
+          <div class="viral-name">Ulm-Ulm Eastwood</div>
+          <div class="viral-area">Eastwood</div>
+          <div class="viral-why">Korean fried chicken — viral on TikTok for the 'mountain' size portion. Order half-half flavors.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Ulm-Ulm%20Korean%20Eastwood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+    </div>
+  </details>
 </section>
 
 <!-- ============================== DAY 6 - Jul 12 ============================== -->
@@ -1224,6 +1705,102 @@
       <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=The%20Star%2C%2080%20Pyrmont%20St%2C%20Pyrmont" target="_blank" style="color:#2563eb;font-weight:500;">The Star, 80 Pyrmont St, Pyrmont</a></p>
     </div>
   </div>
+  <details class="viral-section">
+    <summary>🔥 Top 10 from TikTok &amp; Instagram <small>· Sydney Harbour & CBD</small></summary>
+    <p class="viral-note">Curated viral hits & cult favorites locals queue for. Many require booking ahead — check the venue's Instagram for current waitlist tips.</p>
+    <div class="viral-grid">
+      <div class="viral-card">
+        <div class="viral-rank">#1</div>
+        <div class="viral-body">
+          <div class="viral-name">Lune Croissanterie</div>
+          <div class="viral-area">QVB pop-up + Fitzroy</div>
+          <div class="viral-why">World-famous flaky croissants — TikTok devotees queue from 6 AM. Two-bite cruffins disappear in 20 min.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lune%20Croissanterie%20QVB%20Sydney" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#2</div>
+        <div class="viral-body">
+          <div class="viral-name">Black Star Pastry Newtown</div>
+          <div class="viral-area">Newtown</div>
+          <div class="viral-why">Strawberry watermelon cake = the most Instagrammed cake on Earth. Get a slice + flat white.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Black%20Star%20Pastry%20277%20Australia%20St%20Newtown%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#3</div>
+        <div class="viral-body">
+          <div class="viral-name">Bourke Street Bakery Surry Hills</div>
+          <div class="viral-area">Surry Hills</div>
+          <div class="viral-why">Ginger brûlée tart, sausage rolls. The OG Sydney bakery, now 13 locations.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Bourke%20Street%20Bakery%20633%20Bourke%20St%20Surry%20Hills" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#4</div>
+        <div class="viral-body">
+          <div class="viral-name">The Grounds of Alexandria</div>
+          <div class="viral-area">Alexandria</div>
+          <div class="viral-why">Garden cafe with farm animals + flower walls. >100k Instagram posts. Reserve weekend brunch 2 weeks ahead.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=The%20Grounds%20of%20Alexandria%207A%202%20Huntley%20St%20Alexandria%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#5</div>
+        <div class="viral-body">
+          <div class="viral-name">Bills Surry Hills</div>
+          <div class="viral-area">Surry Hills</div>
+          <div class="viral-why">Ricotta hotcakes (1996 invention) — Bill Granger's original location. Kid-friendly.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Bills%20359%20Crown%20St%20Surry%20Hills" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#6</div>
+        <div class="viral-body">
+          <div class="viral-name">Mr Wong</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Glam Cantonese basement, dim sum trolleys, Insta-famous interior. Book 4 weeks out for dinner.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Mr%20Wong%203%20Bridge%20Ln%20Sydney%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#7</div>
+        <div class="viral-body">
+          <div class="viral-name">Hubert</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Underground French wine cellar — candlelit, theatrical. Most-saved 'date night' spot in Sydney on TikTok.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Restaurant%20Hubert%2015%20Bligh%20St%20Sydney%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#8</div>
+        <div class="viral-body">
+          <div class="viral-name">Single O Coffee Reservoir</div>
+          <div class="viral-area">Surry Hills</div>
+          <div class="viral-why">Specialty coffee mecca — TikTok latte art reels filmed here weekly.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Single%20O%2060-64%20Reservoir%20St%20Surry%20Hills%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#9</div>
+        <div class="viral-body">
+          <div class="viral-name">Fratelli Paradiso</div>
+          <div class="viral-area">Potts Point</div>
+          <div class="viral-why">All-day Italian, no bookings, queue out the door. Insta-staple cacio e pepe.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Fratelli%20Paradiso%2012-16%20Challis%20Ave%20Potts%20Point%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#10</div>
+        <div class="viral-body">
+          <div class="viral-name">Quay Restaurant</div>
+          <div class="viral-area">The Rocks</div>
+          <div class="viral-why">Snow egg dessert — Masterchef famous. Three-hat fine dining with Opera House view.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Quay%20Restaurant%20Upper%20Level%20Overseas%20Passenger%20Terminal%20The%20Rocks" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+    </div>
+  </details>
 </section>
 
 <!-- ============================== DAY 7 - Jul 13 ============================== -->
@@ -1288,8 +1865,103 @@
       <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Macquarie%20Centre%20L2" target="_blank" style="color:#2563eb;font-weight:500;">Macquarie Centre L2</a></p>
     </div>
   </div>
-
-  <h3>🍽️ Dinner — Melbourne arrival</h3>
+  <details class="viral-section">
+    <summary>🔥 Top 10 from TikTok &amp; Instagram <small>· Sydney North Ryde / Chatswood / Eastwood</small></summary>
+    <p class="viral-note">Curated viral hits & cult favorites locals queue for. Many require booking ahead — check the venue's Instagram for current waitlist tips.</p>
+    <div class="viral-grid">
+      <div class="viral-card">
+        <div class="viral-rank">#1</div>
+        <div class="viral-body">
+          <div class="viral-name">Devon Cafe Eastwood</div>
+          <div class="viral-area">Eastwood</div>
+          <div class="viral-why">Korean-Aussie fusion brunch — 'Mr & Mrs Smith' breakfast is a TikTok cult classic.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Devon%20Cafe%2076%20Devonshire%20St%20Eastwood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#2</div>
+        <div class="viral-body">
+          <div class="viral-name">Mamak Chatswood</div>
+          <div class="viral-area">Chatswood</div>
+          <div class="viral-why">Theatrical roti-flipping at the entrance. TikTok ASMR favorite. Roti tisu is the move.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Mamak%20Chatswood%20409%20Victoria%20Ave%20Chatswood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#3</div>
+        <div class="viral-body">
+          <div class="viral-name">Wagaya Chatswood</div>
+          <div class="viral-area">Chatswood</div>
+          <div class="viral-why">Tablet-ordering Japanese izakaya. Kids love the gadgets, viral on TikTok for table-side photo booth.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Wagaya%20Chatswood%203%20Help%20St%20Chatswood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#4</div>
+        <div class="viral-body">
+          <div class="viral-name">Cardamom Pod Lane Cove</div>
+          <div class="viral-area">Lane Cove</div>
+          <div class="viral-why">Modern Indian, butter chicken pizza is TikTok-famous. Cozy + family-friendly.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cardamom%20Pod%20122%20Longueville%20Rd%20Lane%20Cove%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#5</div>
+        <div class="viral-body">
+          <div class="viral-name">Eastwood Korean BBQ Strip</div>
+          <div class="viral-area">Eastwood</div>
+          <div class="viral-why">5+ KBBQ joints on one block — Madang, Hanok, Dong Il Jang. Locals call it 'Little Korea'.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Eastwood%20Rowe%20St%20Eastwood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#6</div>
+        <div class="viral-body">
+          <div class="viral-name">Spice Alley Chippendale</div>
+          <div class="viral-area">Chippendale</div>
+          <div class="viral-why">Hawker-style food court, lantern-lit alley. Insta-perfect at dusk. 30 min from North Ryde.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Spice%20Alley%2018-20%20Kensington%20St%20Chippendale%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#7</div>
+        <div class="viral-body">
+          <div class="viral-name">Ho Jiak Town Hall</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Malaysian street food blowing up on TikTok. Char kway teow, nasi lemak. 25 min from Macquarie.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Ho%20Jiak%20Town%20Hall%20Sydney%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#8</div>
+        <div class="viral-body">
+          <div class="viral-name">Anchor Bar Macquarie</div>
+          <div class="viral-area">Macquarie Park</div>
+          <div class="viral-why">Buffalo wings + craft beer. Easy 5-min walk from Oaks. Family-friendly.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Anchor%20Bar%20Macquarie%20Centre%20Herring%20Rd%20Macquarie%20Park" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#9</div>
+        <div class="viral-body">
+          <div class="viral-name">Chefs Gallery Chatswood</div>
+          <div class="viral-area">Chatswood</div>
+          <div class="viral-why">Hand-pulled noodles in front of you. TikTok ASMR favorite. Always packed.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Chefs%20Gallery%20Chatswood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#10</div>
+        <div class="viral-body">
+          <div class="viral-name">Ulm-Ulm Eastwood</div>
+          <div class="viral-area">Eastwood</div>
+          <div class="viral-why">Korean fried chicken — viral on TikTok for the 'mountain' size portion. Order half-half flavors.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Ulm-Ulm%20Korean%20Eastwood%20NSW" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+    </div>
+  </details>
+<h3>🍽️ Dinner — Melbourne arrival</h3>
   <div class="cuisine-bar" data-day="d7-dinner">
     <span class="label">Filter by cuisine:</span>
     <button class="cuisine-pill on" data-cuisine="all">All</button>
@@ -1369,8 +2041,103 @@
       <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=106%20Flinders%20Ln" target="_blank" style="color:#2563eb;font-weight:500;">106 Flinders Ln</a></p>
     </div>
   </div>
-
-  <h3>🍽️ Dinner — Tue 14 July</h3>
+  <details class="viral-section">
+    <summary>🔥 Top 10 from TikTok &amp; Instagram <small>· Melbourne CBD</small></summary>
+    <p class="viral-note">Curated viral hits & cult favorites locals queue for. Many require booking ahead — check the venue's Instagram for current waitlist tips.</p>
+    <div class="viral-grid">
+      <div class="viral-card">
+        <div class="viral-rank">#1</div>
+        <div class="viral-body">
+          <div class="viral-name">Lune Croissanterie Fitzroy</div>
+          <div class="viral-area">Fitzroy</div>
+          <div class="viral-why">The world's most viral pastry — NYT-rated 'finest croissant ever'. Cube croissants are the TikTok darling. Queue from 7 AM.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lune%20Croissanterie%20119%20Rose%20St%20Fitzroy%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#2</div>
+        <div class="viral-body">
+          <div class="viral-name">Hardware Société</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">French-style brunch — baked eggs, French toast. Most-tagged Melbourne cafe on Instagram.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Hardware%20Soci%C3%A9t%C3%A9%20123%20Hardware%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#3</div>
+        <div class="viral-body">
+          <div class="viral-name">Higher Ground</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Cathedral-ceiling cafe inside a 1926 power station. Insta gold. Pancakes & coffee.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Higher%20Ground%20650%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#4</div>
+        <div class="viral-body">
+          <div class="viral-name">Brother Baba Budan</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Hanging chairs from the ceiling — most photographed coffee shop in Melbourne. Tiny but iconic.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Brother%20Baba%20Budan%20359%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#5</div>
+        <div class="viral-body">
+          <div class="viral-name">Patricia Coffee Brewers</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Tiny laneway specialty bar — no seats, pure coffee. TikTok flat-white grail.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Patricia%20Coffee%20Brewers%20493-495%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#6</div>
+        <div class="viral-body">
+          <div class="viral-name">Chin Chin</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Asian street food — 2-hour queues. The 'Feed Me' menu is the TikTok must.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Chin%20Chin%20125%20Flinders%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#7</div>
+        <div class="viral-body">
+          <div class="viral-name">Movida</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Tapas in a Hosier Lane laneway. Anchovies on milk crumb is the dish.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=MoVida%201%20Hosier%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#8</div>
+        <div class="viral-body">
+          <div class="viral-name">Tipo 00</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Handmade pasta on display — cult Italian. Tagliolini with crab is TikTok-famous.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Tipo%2000%20361%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#9</div>
+        <div class="viral-body">
+          <div class="viral-name">Cumulus Inc</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Andrew McConnell's all-day eatery on Flinders Lane. The pearl-meat sandwich.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cumulus%20Inc%2045%20Flinders%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#10</div>
+        <div class="viral-body">
+          <div class="viral-name">Yo-Chi Self-Serve Frozen Yoghurt</div>
+          <div class="viral-area">CBD/Multiple</div>
+          <div class="viral-why">Pay-by-weight froyo with 50+ toppings. Kids' TikTok dream. Bourke St + Emporium branches.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Yo-Chi%20Frozen%20Yoghurt%20Bourke%20St%20Melbourne" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+    </div>
+  </details>
+<h3>🍽️ Dinner — Tue 14 July</h3>
   <div class="cuisine-bar" data-day="d8-dinner">
     <span class="label">Filter by cuisine:</span>
     <button class="cuisine-pill on" data-cuisine="all">All</button>
@@ -1401,6 +2168,102 @@
       <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Emporium%20Melbourne%20L4" target="_blank" style="color:#2563eb;font-weight:500;">Emporium Melbourne L4</a></p>
     </div>
   </div>
+  <details class="viral-section">
+    <summary>🔥 Top 10 from TikTok &amp; Instagram <small>· Melbourne CBD</small></summary>
+    <p class="viral-note">Curated viral hits & cult favorites locals queue for. Many require booking ahead — check the venue's Instagram for current waitlist tips.</p>
+    <div class="viral-grid">
+      <div class="viral-card">
+        <div class="viral-rank">#1</div>
+        <div class="viral-body">
+          <div class="viral-name">Lune Croissanterie Fitzroy</div>
+          <div class="viral-area">Fitzroy</div>
+          <div class="viral-why">The world's most viral pastry — NYT-rated 'finest croissant ever'. Cube croissants are the TikTok darling. Queue from 7 AM.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lune%20Croissanterie%20119%20Rose%20St%20Fitzroy%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#2</div>
+        <div class="viral-body">
+          <div class="viral-name">Hardware Société</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">French-style brunch — baked eggs, French toast. Most-tagged Melbourne cafe on Instagram.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Hardware%20Soci%C3%A9t%C3%A9%20123%20Hardware%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#3</div>
+        <div class="viral-body">
+          <div class="viral-name">Higher Ground</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Cathedral-ceiling cafe inside a 1926 power station. Insta gold. Pancakes & coffee.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Higher%20Ground%20650%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#4</div>
+        <div class="viral-body">
+          <div class="viral-name">Brother Baba Budan</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Hanging chairs from the ceiling — most photographed coffee shop in Melbourne. Tiny but iconic.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Brother%20Baba%20Budan%20359%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#5</div>
+        <div class="viral-body">
+          <div class="viral-name">Patricia Coffee Brewers</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Tiny laneway specialty bar — no seats, pure coffee. TikTok flat-white grail.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Patricia%20Coffee%20Brewers%20493-495%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#6</div>
+        <div class="viral-body">
+          <div class="viral-name">Chin Chin</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Asian street food — 2-hour queues. The 'Feed Me' menu is the TikTok must.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Chin%20Chin%20125%20Flinders%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#7</div>
+        <div class="viral-body">
+          <div class="viral-name">Movida</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Tapas in a Hosier Lane laneway. Anchovies on milk crumb is the dish.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=MoVida%201%20Hosier%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#8</div>
+        <div class="viral-body">
+          <div class="viral-name">Tipo 00</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Handmade pasta on display — cult Italian. Tagliolini with crab is TikTok-famous.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Tipo%2000%20361%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#9</div>
+        <div class="viral-body">
+          <div class="viral-name">Cumulus Inc</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Andrew McConnell's all-day eatery on Flinders Lane. The pearl-meat sandwich.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cumulus%20Inc%2045%20Flinders%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#10</div>
+        <div class="viral-body">
+          <div class="viral-name">Yo-Chi Self-Serve Frozen Yoghurt</div>
+          <div class="viral-area">CBD/Multiple</div>
+          <div class="viral-why">Pay-by-weight froyo with 50+ toppings. Kids' TikTok dream. Bourke St + Emporium branches.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Yo-Chi%20Frozen%20Yoghurt%20Bourke%20St%20Melbourne" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+    </div>
+  </details>
 </section>
 
 <!-- ============================== DAY 9 - Jul 15 ============================== -->
@@ -1458,6 +2321,102 @@
       <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=23%20Oliver%20Ln%2C%20Melbourne" target="_blank" style="color:#2563eb;font-weight:500;">23 Oliver Ln, Melbourne</a></p>
     </div>
   </div>
+  <details class="viral-section">
+    <summary>🔥 Top 10 from TikTok &amp; Instagram <small>· Melbourne CBD</small></summary>
+    <p class="viral-note">Curated viral hits & cult favorites locals queue for. Many require booking ahead — check the venue's Instagram for current waitlist tips.</p>
+    <div class="viral-grid">
+      <div class="viral-card">
+        <div class="viral-rank">#1</div>
+        <div class="viral-body">
+          <div class="viral-name">Lune Croissanterie Fitzroy</div>
+          <div class="viral-area">Fitzroy</div>
+          <div class="viral-why">The world's most viral pastry — NYT-rated 'finest croissant ever'. Cube croissants are the TikTok darling. Queue from 7 AM.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lune%20Croissanterie%20119%20Rose%20St%20Fitzroy%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#2</div>
+        <div class="viral-body">
+          <div class="viral-name">Hardware Société</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">French-style brunch — baked eggs, French toast. Most-tagged Melbourne cafe on Instagram.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Hardware%20Soci%C3%A9t%C3%A9%20123%20Hardware%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#3</div>
+        <div class="viral-body">
+          <div class="viral-name">Higher Ground</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Cathedral-ceiling cafe inside a 1926 power station. Insta gold. Pancakes & coffee.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Higher%20Ground%20650%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#4</div>
+        <div class="viral-body">
+          <div class="viral-name">Brother Baba Budan</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Hanging chairs from the ceiling — most photographed coffee shop in Melbourne. Tiny but iconic.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Brother%20Baba%20Budan%20359%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#5</div>
+        <div class="viral-body">
+          <div class="viral-name">Patricia Coffee Brewers</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Tiny laneway specialty bar — no seats, pure coffee. TikTok flat-white grail.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Patricia%20Coffee%20Brewers%20493-495%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#6</div>
+        <div class="viral-body">
+          <div class="viral-name">Chin Chin</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Asian street food — 2-hour queues. The 'Feed Me' menu is the TikTok must.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Chin%20Chin%20125%20Flinders%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#7</div>
+        <div class="viral-body">
+          <div class="viral-name">Movida</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Tapas in a Hosier Lane laneway. Anchovies on milk crumb is the dish.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=MoVida%201%20Hosier%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#8</div>
+        <div class="viral-body">
+          <div class="viral-name">Tipo 00</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Handmade pasta on display — cult Italian. Tagliolini with crab is TikTok-famous.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Tipo%2000%20361%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#9</div>
+        <div class="viral-body">
+          <div class="viral-name">Cumulus Inc</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Andrew McConnell's all-day eatery on Flinders Lane. The pearl-meat sandwich.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cumulus%20Inc%2045%20Flinders%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#10</div>
+        <div class="viral-body">
+          <div class="viral-name">Yo-Chi Self-Serve Frozen Yoghurt</div>
+          <div class="viral-area">CBD/Multiple</div>
+          <div class="viral-why">Pay-by-weight froyo with 50+ toppings. Kids' TikTok dream. Bourke St + Emporium branches.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Yo-Chi%20Frozen%20Yoghurt%20Bourke%20St%20Melbourne" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+    </div>
+  </details>
 </section>
 
 <!-- ============================== DAY 10 - Jul 16 ============================== -->
@@ -1514,6 +2473,102 @@
   <div class="tip-box">
     <strong>🦋 Tour includes light dinner</strong> on most Phillip Island packages — typically fish & chips or pizza at visitor centre. No separate dinner needed.
   </div>
+  <details class="viral-section">
+    <summary>🔥 Top 10 from TikTok &amp; Instagram <small>· Melbourne CBD</small></summary>
+    <p class="viral-note">Curated viral hits & cult favorites locals queue for. Many require booking ahead — check the venue's Instagram for current waitlist tips.</p>
+    <div class="viral-grid">
+      <div class="viral-card">
+        <div class="viral-rank">#1</div>
+        <div class="viral-body">
+          <div class="viral-name">Lune Croissanterie Fitzroy</div>
+          <div class="viral-area">Fitzroy</div>
+          <div class="viral-why">The world's most viral pastry — NYT-rated 'finest croissant ever'. Cube croissants are the TikTok darling. Queue from 7 AM.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lune%20Croissanterie%20119%20Rose%20St%20Fitzroy%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#2</div>
+        <div class="viral-body">
+          <div class="viral-name">Hardware Société</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">French-style brunch — baked eggs, French toast. Most-tagged Melbourne cafe on Instagram.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Hardware%20Soci%C3%A9t%C3%A9%20123%20Hardware%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#3</div>
+        <div class="viral-body">
+          <div class="viral-name">Higher Ground</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Cathedral-ceiling cafe inside a 1926 power station. Insta gold. Pancakes & coffee.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Higher%20Ground%20650%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#4</div>
+        <div class="viral-body">
+          <div class="viral-name">Brother Baba Budan</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Hanging chairs from the ceiling — most photographed coffee shop in Melbourne. Tiny but iconic.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Brother%20Baba%20Budan%20359%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#5</div>
+        <div class="viral-body">
+          <div class="viral-name">Patricia Coffee Brewers</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Tiny laneway specialty bar — no seats, pure coffee. TikTok flat-white grail.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Patricia%20Coffee%20Brewers%20493-495%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#6</div>
+        <div class="viral-body">
+          <div class="viral-name">Chin Chin</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Asian street food — 2-hour queues. The 'Feed Me' menu is the TikTok must.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Chin%20Chin%20125%20Flinders%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#7</div>
+        <div class="viral-body">
+          <div class="viral-name">Movida</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Tapas in a Hosier Lane laneway. Anchovies on milk crumb is the dish.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=MoVida%201%20Hosier%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#8</div>
+        <div class="viral-body">
+          <div class="viral-name">Tipo 00</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Handmade pasta on display — cult Italian. Tagliolini with crab is TikTok-famous.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Tipo%2000%20361%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#9</div>
+        <div class="viral-body">
+          <div class="viral-name">Cumulus Inc</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Andrew McConnell's all-day eatery on Flinders Lane. The pearl-meat sandwich.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cumulus%20Inc%2045%20Flinders%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#10</div>
+        <div class="viral-body">
+          <div class="viral-name">Yo-Chi Self-Serve Frozen Yoghurt</div>
+          <div class="viral-area">CBD/Multiple</div>
+          <div class="viral-why">Pay-by-weight froyo with 50+ toppings. Kids' TikTok dream. Bourke St + Emporium branches.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Yo-Chi%20Frozen%20Yoghurt%20Bourke%20St%20Melbourne" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+    </div>
+  </details>
 </section>
 
 <!-- ============================== DAY 11 - Jul 17 ============================== -->
@@ -1562,6 +2617,102 @@
       <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=181%20Barkly%20St%2C%20St%20Kilda" target="_blank" style="color:#2563eb;font-weight:500;">181 Barkly St, St Kilda</a></p>
     </div>
   </div>
+  <details class="viral-section">
+    <summary>🔥 Top 10 from TikTok &amp; Instagram <small>· St Kilda & Beachside</small></summary>
+    <p class="viral-note">Curated viral hits & cult favorites locals queue for. Many require booking ahead — check the venue's Instagram for current waitlist tips.</p>
+    <div class="viral-grid">
+      <div class="viral-card">
+        <div class="viral-rank">#1</div>
+        <div class="viral-body">
+          <div class="viral-name">Lune Croissanterie St Kilda</div>
+          <div class="viral-area">St Kilda</div>
+          <div class="viral-why">Beachside branch of the world-famous croissanterie. Less queue than Fitzroy, same magic.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lune%20Croissanterie%20161%20Fitzroy%20St%20St%20Kilda%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#2</div>
+        <div class="viral-body">
+          <div class="viral-name">Stokehouse</div>
+          <div class="viral-area">St Kilda</div>
+          <div class="viral-why">Beachfront fine dining — wood-fired pizzas downstairs. Sunset on the water. TikTok proposal spot.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Stokehouse%2030%20Jacka%20Blvd%20St%20Kilda%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#3</div>
+        <div class="viral-body">
+          <div class="viral-name">Cicciolina</div>
+          <div class="viral-area">St Kilda</div>
+          <div class="viral-why">No-bookings Italian institution. The waiting bar with Negronis is half the fun.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cicciolina%20130%20Acland%20St%20St%20Kilda%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#4</div>
+        <div class="viral-body">
+          <div class="viral-name">8bit Burgers</div>
+          <div class="viral-area">St Kilda + Footscray</div>
+          <div class="viral-why">Arcade-themed burger joint, fluoro retro vibes. TikTok 'cheese pull' shots. Kids' paradise.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=8bit%20Burgers%20Acland%20St%20St%20Kilda%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#5</div>
+        <div class="viral-body">
+          <div class="viral-name">Donut King Acland Street</div>
+          <div class="viral-area">St Kilda</div>
+          <div class="viral-why">Old-school cinnamon donuts from a beachfront window. Acland St cake walk staple.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Acland%20Street%20St%20Kilda%20Donut%20Window%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#6</div>
+        <div class="viral-body">
+          <div class="viral-name">Monarch Cake Shop</div>
+          <div class="viral-area">St Kilda</div>
+          <div class="viral-why">Hungarian cake institution since 1934. Kugelhopf + plum cake. Acland St legend.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Monarch%20Cake%20Shop%20103%20Acland%20St%20St%20Kilda%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#7</div>
+        <div class="viral-body">
+          <div class="viral-name">Stalactites Greek</div>
+          <div class="viral-area">CBD (worth the trip)</div>
+          <div class="viral-why">Open since 1978 — souvlaki + saganaki. 24-hour gyros. Nostalgic Greek vibe.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Stalactites%20177-183%20Lonsdale%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#8</div>
+        <div class="viral-body">
+          <div class="viral-name">Sunda</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">SE Asian fusion in a laneway. Roti with curry sauce is the TikTok bite. Punchy flavors.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Sunda%2018%20Punch%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#9</div>
+        <div class="viral-body">
+          <div class="viral-name">Maha</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Shane Delia's Middle Eastern. Lamb shoulder feast. Underground cellar dining.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Maha%2021%20Bond%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#10</div>
+        <div class="viral-body">
+          <div class="viral-name">Tolarno Bistro</div>
+          <div class="viral-area">St Kilda</div>
+          <div class="viral-why">Mod-Australian inside the historic Tolarno Hotel. Mira Bondi mural. Oysters + steak.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Tolarno%20Bistro%2042%20Fitzroy%20St%20St%20Kilda%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+    </div>
+  </details>
 </section>
 
 <!-- ============================== DAY 12 - Jul 18 ============================== -->
@@ -1610,8 +2761,103 @@
       <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=Melbourne%20Central%20L3" target="_blank" style="color:#2563eb;font-weight:500;">Melbourne Central L3</a></p>
     </div>
   </div>
-
-  <h3>🍽️ Farewell Dinner — Sat 18 July</h3>
+  <details class="viral-section">
+    <summary>🔥 Top 10 from TikTok &amp; Instagram <small>· Melbourne CBD</small></summary>
+    <p class="viral-note">Curated viral hits & cult favorites locals queue for. Many require booking ahead — check the venue's Instagram for current waitlist tips.</p>
+    <div class="viral-grid">
+      <div class="viral-card">
+        <div class="viral-rank">#1</div>
+        <div class="viral-body">
+          <div class="viral-name">Lune Croissanterie Fitzroy</div>
+          <div class="viral-area">Fitzroy</div>
+          <div class="viral-why">The world's most viral pastry — NYT-rated 'finest croissant ever'. Cube croissants are the TikTok darling. Queue from 7 AM.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lune%20Croissanterie%20119%20Rose%20St%20Fitzroy%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#2</div>
+        <div class="viral-body">
+          <div class="viral-name">Hardware Société</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">French-style brunch — baked eggs, French toast. Most-tagged Melbourne cafe on Instagram.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Hardware%20Soci%C3%A9t%C3%A9%20123%20Hardware%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#3</div>
+        <div class="viral-body">
+          <div class="viral-name">Higher Ground</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Cathedral-ceiling cafe inside a 1926 power station. Insta gold. Pancakes & coffee.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Higher%20Ground%20650%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#4</div>
+        <div class="viral-body">
+          <div class="viral-name">Brother Baba Budan</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Hanging chairs from the ceiling — most photographed coffee shop in Melbourne. Tiny but iconic.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Brother%20Baba%20Budan%20359%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#5</div>
+        <div class="viral-body">
+          <div class="viral-name">Patricia Coffee Brewers</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Tiny laneway specialty bar — no seats, pure coffee. TikTok flat-white grail.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Patricia%20Coffee%20Brewers%20493-495%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#6</div>
+        <div class="viral-body">
+          <div class="viral-name">Chin Chin</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Asian street food — 2-hour queues. The 'Feed Me' menu is the TikTok must.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Chin%20Chin%20125%20Flinders%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#7</div>
+        <div class="viral-body">
+          <div class="viral-name">Movida</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Tapas in a Hosier Lane laneway. Anchovies on milk crumb is the dish.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=MoVida%201%20Hosier%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#8</div>
+        <div class="viral-body">
+          <div class="viral-name">Tipo 00</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Handmade pasta on display — cult Italian. Tagliolini with crab is TikTok-famous.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Tipo%2000%20361%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#9</div>
+        <div class="viral-body">
+          <div class="viral-name">Cumulus Inc</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Andrew McConnell's all-day eatery on Flinders Lane. The pearl-meat sandwich.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cumulus%20Inc%2045%20Flinders%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#10</div>
+        <div class="viral-body">
+          <div class="viral-name">Yo-Chi Self-Serve Frozen Yoghurt</div>
+          <div class="viral-area">CBD/Multiple</div>
+          <div class="viral-why">Pay-by-weight froyo with 50+ toppings. Kids' TikTok dream. Bourke St + Emporium branches.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Yo-Chi%20Frozen%20Yoghurt%20Bourke%20St%20Melbourne" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+    </div>
+  </details>
+<h3>🍽️ Farewell Dinner — Sat 18 July</h3>
   <div class="cuisine-bar" data-day="d12-dinner">
     <span class="label">Filter by cuisine:</span>
     <button class="cuisine-pill on" data-cuisine="all">All</button>
@@ -1642,6 +2888,102 @@
       <p class="addr">📍 <a href="https://www.google.com/maps/search/?api=1&query=17%20Market%20Ln%2C%20Melbourne" target="_blank" style="color:#2563eb;font-weight:500;">17 Market Ln, Melbourne</a></p>
     </div>
   </div>
+  <details class="viral-section">
+    <summary>🔥 Top 10 from TikTok &amp; Instagram <small>· Melbourne CBD</small></summary>
+    <p class="viral-note">Curated viral hits & cult favorites locals queue for. Many require booking ahead — check the venue's Instagram for current waitlist tips.</p>
+    <div class="viral-grid">
+      <div class="viral-card">
+        <div class="viral-rank">#1</div>
+        <div class="viral-body">
+          <div class="viral-name">Lune Croissanterie Fitzroy</div>
+          <div class="viral-area">Fitzroy</div>
+          <div class="viral-why">The world's most viral pastry — NYT-rated 'finest croissant ever'. Cube croissants are the TikTok darling. Queue from 7 AM.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Lune%20Croissanterie%20119%20Rose%20St%20Fitzroy%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#2</div>
+        <div class="viral-body">
+          <div class="viral-name">Hardware Société</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">French-style brunch — baked eggs, French toast. Most-tagged Melbourne cafe on Instagram.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Hardware%20Soci%C3%A9t%C3%A9%20123%20Hardware%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#3</div>
+        <div class="viral-body">
+          <div class="viral-name">Higher Ground</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Cathedral-ceiling cafe inside a 1926 power station. Insta gold. Pancakes & coffee.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Higher%20Ground%20650%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#4</div>
+        <div class="viral-body">
+          <div class="viral-name">Brother Baba Budan</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Hanging chairs from the ceiling — most photographed coffee shop in Melbourne. Tiny but iconic.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Brother%20Baba%20Budan%20359%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#5</div>
+        <div class="viral-body">
+          <div class="viral-name">Patricia Coffee Brewers</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Tiny laneway specialty bar — no seats, pure coffee. TikTok flat-white grail.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Patricia%20Coffee%20Brewers%20493-495%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#6</div>
+        <div class="viral-body">
+          <div class="viral-name">Chin Chin</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Asian street food — 2-hour queues. The 'Feed Me' menu is the TikTok must.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Chin%20Chin%20125%20Flinders%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#7</div>
+        <div class="viral-body">
+          <div class="viral-name">Movida</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Tapas in a Hosier Lane laneway. Anchovies on milk crumb is the dish.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=MoVida%201%20Hosier%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#8</div>
+        <div class="viral-body">
+          <div class="viral-name">Tipo 00</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Handmade pasta on display — cult Italian. Tagliolini with crab is TikTok-famous.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Tipo%2000%20361%20Little%20Bourke%20St%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#9</div>
+        <div class="viral-body">
+          <div class="viral-name">Cumulus Inc</div>
+          <div class="viral-area">CBD</div>
+          <div class="viral-why">Andrew McConnell's all-day eatery on Flinders Lane. The pearl-meat sandwich.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Cumulus%20Inc%2045%20Flinders%20Ln%20Melbourne%20VIC" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+      <div class="viral-card">
+        <div class="viral-rank">#10</div>
+        <div class="viral-body">
+          <div class="viral-name">Yo-Chi Self-Serve Frozen Yoghurt</div>
+          <div class="viral-area">CBD/Multiple</div>
+          <div class="viral-why">Pay-by-weight froyo with 50+ toppings. Kids' TikTok dream. Bourke St + Emporium branches.</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Yo-Chi%20Frozen%20Yoghurt%20Bourke%20St%20Melbourne" target="_blank" class="viral-map">📍 Open in Maps</a>
+        </div>
+      </div>
+    </div>
+  </details>
 </section>
 
 <!-- ============================== DAY 13 - Jul 19 ============================== -->
@@ -1804,7 +3146,7 @@
 </footer>
 
 <script>
-  // ======== TAB NAVIGATION ========
+  // Tab navigation
   const tabs = document.querySelectorAll('nav.tabs button');
   const sections = document.querySelectorAll('main .section');
   tabs.forEach(tab => {
@@ -1817,140 +3159,24 @@
     });
   });
 
-  // ======== EDIT MODE (per subsection H3) ========
-  function setupEditButtons() {
-    document.querySelectorAll('main section.section').forEach(tab => {
-      const tabId = tab.id;
-      let idx = 0;
-      tab.querySelectorAll('h3').forEach(h3 => {
-        const blockId = tabId + '-h3-' + idx;
-        idx++;
-
-        // Collect siblings after this h3 (within its parent) until next h3
-        const contentEls = [];
-        let n = h3.nextElementSibling;
-        while (n && n.tagName !== 'H3') {
-          contentEls.push(n);
-          n = n.nextElementSibling;
-        }
-        if (contentEls.length === 0) return;
-
-        // Wrap them in an editable container
-        const wrap = document.createElement('div');
-        wrap.className = 'editable-content';
-        wrap.dataset.blockId = blockId;
-        contentEls[0].before(wrap);
-        contentEls.forEach(el => wrap.appendChild(el));
-
-        // Add inline edit button on the h3
-        const btn = document.createElement('button');
-        btn.className = 'edit-btn';
-        btn.type = 'button';
-        btn.innerHTML = '✏️ Edit';
-        btn.title = 'Edit this section — saves to your browser';
-        h3.appendChild(btn);
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          toggleEdit(wrap, btn);
-        });
-
-        // Restore saved version if present
-        const saved = localStorage.getItem('itin:' + blockId);
-        if (saved) { wrap.innerHTML = saved; }
-      });
-    });
-  }
-
-  function toggleEdit(wrap, btn) {
-    if (wrap.classList.contains('editing')) {
-      wrap.contentEditable = 'false';
-      wrap.classList.remove('editing');
-      btn.innerHTML = '✏️ Edit';
-      btn.classList.remove('active');
-      try {
-        localStorage.setItem('itin:' + wrap.dataset.blockId, wrap.innerHTML);
-        showToast('Saved to your browser ✓');
-      } catch(err) {
-        showToast('Could not save (storage full)');
-      }
-      bindCuisineFilters();
-    } else {
-      wrap.contentEditable = 'true';
-      wrap.classList.add('editing');
-      btn.innerHTML = '💾 Save';
-      btn.classList.add('active');
-    }
-  }
-
-  // ======== CUISINE FILTERS (idempotent) ========
-  function bindCuisineFilters() {
-    document.querySelectorAll('.cuisine-bar').forEach(bar => {
-      const dayKey = bar.getAttribute('data-day');
-      const grid = document.querySelector('.dining-grid[data-day-grid="' + dayKey + '"]');
-      if (!grid) return;
-      bar.querySelectorAll('.cuisine-pill').forEach(pill => {
-        if (pill.dataset.bound === '1') return;
-        pill.dataset.bound = '1';
-        pill.addEventListener('click', () => {
-          bar.querySelectorAll('.cuisine-pill').forEach(p => p.classList.remove('on'));
-          pill.classList.add('on');
-          const c = pill.getAttribute('data-cuisine');
-          grid.querySelectorAll('.dine').forEach(d => {
-            const dc = d.getAttribute('data-cuisine');
-            if (c === 'all') { d.classList.remove('hidden'); }
-            else { d.classList.toggle('hidden', dc !== c); }
-          });
+  // Cuisine filters (per day)
+  document.querySelectorAll('.cuisine-bar').forEach(bar => {
+    const dayKey = bar.getAttribute('data-day');
+    const grid = document.querySelector('.dining-grid[data-day-grid="' + dayKey + '"]');
+    if (!grid) return;
+    bar.querySelectorAll('.cuisine-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        bar.querySelectorAll('.cuisine-pill').forEach(p => p.classList.remove('on'));
+        pill.classList.add('on');
+        const c = pill.getAttribute('data-cuisine');
+        grid.querySelectorAll('.dine').forEach(d => {
+          const dc = d.getAttribute('data-cuisine');
+          if (c === 'all') { d.classList.remove('hidden'); }
+          else { d.classList.toggle('hidden', dc !== c); }
         });
       });
     });
-  }
-
-  // ======== TOAST / RESET / DOWNLOAD ========
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    if (!t) return;
-    t.textContent = msg;
-    t.classList.add('show');
-    clearTimeout(window.__toastTimer);
-    window.__toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
-  }
-
-  function resetAllEdits() {
-    if (!confirm('Reset all your edits and restore the original itinerary?')) return;
-    Object.keys(localStorage).filter(k => k.startsWith('itin:')).forEach(k => localStorage.removeItem(k));
-    location.reload();
-  }
-
-  function downloadCustomized() {
-    const clone = document.documentElement.cloneNode(true);
-    // Strip edit UI
-    clone.querySelectorAll('.edit-btn, .customize-bar, .toast').forEach(el => el.remove());
-    // Unwrap editable-content divs
-    clone.querySelectorAll('.editable-content').forEach(el => {
-      while (el.firstChild) el.parentNode.insertBefore(el.firstChild, el);
-      el.remove();
-    });
-    clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
-    const html = '<!DOCTYPE html>\n' + clone.outerHTML;
-    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'my-australia-itinerary.html';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    showToast('Downloaded ✓');
-  }
-
-  // Expose for inline onclick
-  window.resetAllEdits = resetAllEdits;
-  window.downloadCustomized = downloadCustomized;
-
-  // ======== INIT ========
-  setupEditButtons();
-  bindCuisineFilters();
+  });
 </script>
 
 </body>
