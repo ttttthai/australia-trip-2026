@@ -490,6 +490,61 @@
   }
   .viral-map:active { transform: translateX(0); }
 
+
+  /* Total cost summary card */
+  .cost-summary {
+    background: linear-gradient(135deg, rgba(251,191,36,0.10), rgba(244,114,182,0.06));
+    border: 2px solid var(--gold);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin: 22px 0;
+  }
+  .cost-headline { text-align: center; margin-bottom: 18px; }
+  .cost-amount {
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fbbf24, #f472b6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.15;
+  }
+  .cost-vnd { color: var(--muted); font-size: 1rem; margin-top: 4px; }
+  .cost-perperson {
+    color: var(--accent);
+    font-size: 0.92rem;
+    margin-top: 10px;
+  }
+  .cost-breakdown { margin-top: 16px; }
+  .cost-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .cost-row:last-child { border-bottom: none; }
+  .cost-row .ic { font-size: 1.35rem; min-width: 32px; text-align: center; }
+  .cost-row .lbl { flex: 1; font-size: 0.9rem; }
+  .cost-row .lbl small { display: block; color: var(--muted); font-size: 0.76rem; margin-top: 1px; }
+  .cost-row .amt {
+    font-weight: 600;
+    color: var(--gold);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    min-width: 160px;
+    font-size: 0.92rem;
+  }
+  .cost-row .amt small { display: block; color: var(--muted); font-weight: 400; font-size: 0.76rem; }
+  .cost-foot {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 2px dashed var(--gold);
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
 </style>
 </head>
 <body>
@@ -562,6 +617,68 @@
   <div class="tip-box">
     <strong>💡 Use the tab navigation above</strong> to jump to any day. Each day has its own dinner recommendations — use the <strong>cuisine filter pills</strong> to narrow down to Vietnamese, Japanese, Italian, Steakhouse, etc.
   </div>
+
+  <div class="cost-summary">
+    <div class="cost-headline">
+      <div style="font-size:0.85rem; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Estimated Total Trip Cost</div>
+      <div class="cost-amount">AUD 27,000 – 37,000</div>
+      <div class="cost-vnd">VND 437M – 600M · family of 4 · 13 days · all-in</div>
+      <div class="cost-perperson">≈ AUD 6,750 – 9,250 per person · ≈ AUD 2,080 – 2,850 per day for the whole family</div>
+    </div>
+
+    <div class="cost-breakdown">
+      <div class="cost-row">
+        <div class="ic">✈️</div>
+        <div class="lbl">International flights – VN787/VN780 direct PE × 4<small>Hanoi ↔ Sydney/Melbourne, Boeing 787-9 Premium Economy</small></div>
+        <div class="amt">AUD 15,400 – 19,200<small>VND 250M – 311M</small></div>
+      </div>
+      <div class="cost-row">
+        <div class="ic">🛩️</div>
+        <div class="lbl">Australian domestic flights × 4<small>SYD→HBA + HBA→MEL (Qantas/Virgin one-way)</small></div>
+        <div class="amt">AUD 1,500 – 2,200<small>VND 24M – 36M</small></div>
+      </div>
+      <div class="cost-row">
+        <div class="ic">🏨</div>
+        <div class="lbl">Hotels (11 nights total)<small>Oaks Sydney (5N) + Hobart (2N) + Melbourne CBD (4N)</small></div>
+        <div class="amt">AUD 3,520 – 5,540<small>VND 57M – 90M</small></div>
+      </div>
+      <div class="cost-row">
+        <div class="ic">🍽️</div>
+        <div class="lbl">Food & drink (13 days)<small>~AUD 200/day family avg incl. coffees, snacks, dinners</small></div>
+        <div class="amt">AUD 2,200 – 3,900<small>VND 36M – 63M</small></div>
+      </div>
+      <div class="cost-row">
+        <div class="ic">🚗</div>
+        <div class="lbl">Local transport<small>Uber XL airport runs, Opal/Myki, Tasmania car/tour, day-trip buses</small></div>
+        <div class="amt">AUD 900 – 1,400<small>VND 15M – 23M</small></div>
+      </div>
+      <div class="cost-row">
+        <div class="ic">🎡</div>
+        <div class="lbl">Attractions & day tours<small>Opera House, Bonorong, MONA, Great Ocean Rd, Phillip Island, Eureka, Luna Park, Scienceworks</small></div>
+        <div class="amt">AUD 1,500 – 2,200<small>VND 24M – 36M</small></div>
+      </div>
+      <div class="cost-row">
+        <div class="ic">🛂</div>
+        <div class="lbl">Visa (subclass 600) × 4 + biometrics + translations<small>One-time before trip</small></div>
+        <div class="amt">AUD 1,100 – 1,250<small>VND 18M – 20M</small></div>
+      </div>
+      <div class="cost-row">
+        <div class="ic">🛡️</div>
+        <div class="lbl">Travel insurance (family policy)<small>Recommended – medical, trip cancellation, baggage</small></div>
+        <div class="amt">AUD 250 – 400<small>VND 4M – 6.5M</small></div>
+      </div>
+      <div class="cost-row">
+        <div class="ic">🎁</div>
+        <div class="lbl">Shopping, souvenirs, contingency<small>Buffer for kids' Lego, gifts, unexpected costs</small></div>
+        <div class="amt">AUD 600 – 1,500<small>VND 10M – 24M</small></div>
+      </div>
+    </div>
+
+    <div class="cost-foot">
+      💡 Numbers assume Vietnam Airlines <strong>Premium Economy direct</strong> flights both ways, mid-range to upscale hotels, mix of self-drive and guided tours. See the <strong>Budget</strong> tab for the full table and savings tips.
+    </div>
+  </div>
+
 
   <h3>🎯 Key Dates & Times</h3>
   <div class="card">
